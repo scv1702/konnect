@@ -18,40 +18,40 @@ class StudyDetail extends React.Component {
         } else {
             window.location.href = '/';
         }
-    }  
+    }
 
     deleteStudy = (_id) => {
         const sendParam = { headers, _id };
         if (window.confirm('정말 삭제하시겠습니까?')) {
-            axios.post('http://localhost:8080/board/delete', sendParam)
-            .then((returnData) => {
-                alert('스터디가 삭제 되었습니다.');
-                window.location.href = '/';
-            })
-            .catch((err) => {
-                console.log(err);
-                alert('스터디 삭제에 실패했습니다');
-            });
+            axios.post('http://localhost:8080/study/delete', sendParam)
+                .then((returnData) => {
+                    alert('스터디가 삭제 되었습니다.');
+                    window.location.href = '/';
+                })
+                .catch((err) => {
+                    console.log(err);
+                    alert('스터디 삭제에 실패했습니다');
+                });
         }
     };
 
     getDetail = () => {
         const sendParam = { headers, _id: this.props.location.query._id };
         const marginBottom = { marginBottom: 5 };
-        axios.post("http://localhost:8080/board/detail", sendParam).then((returnData) => {
+        axios.post("http://localhost:8080/study/detail", sendParam).then((returnData) => {
             if (returnData.data.study[0]) {
                 const study = (
                     <div>
                         <Table striped bordered hover>
                             <thead>
-                            <tr>
-                                <th>{returnData.data.study[0].title}</th>
-                            </tr>
+                                <tr>
+                                    <th>{returnData.data.study[0].title}</th>
+                                </tr>
                             </thead>
                             <tbody>
-                            <tr>
-                                <td dangerouslySetInnerHTML={{ __html: returnData.data.study[0].content }}></td>
-                            </tr>
+                                <tr>
+                                    <td dangerouslySetInnerHTML={{ __html: returnData.data.study[0].content }}></td>
+                                </tr>
                             </tbody>
                         </Table>
                         <div>
@@ -74,9 +74,9 @@ class StudyDetail extends React.Component {
                 alert('스터디 상세 조회에 실패했습니다.');
             }
         })
-        .catch((err) => {
-            console.log(err);
-        });
+            .catch((err) => {
+                console.log(err);
+            });
     };
 
     render() {

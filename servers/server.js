@@ -45,6 +45,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use("/member", require("./routes/memberRouter"));
 app.use("/study", require("./routes/studyRouter"));
+app.use("/challenge", require("./routes/challengeRouter"));
 
 app.listen(port, () => {
     console.log(`express is running on ${port}`);

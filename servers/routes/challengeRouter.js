@@ -1,10 +1,10 @@
 const express = require('express');
-const Study = require('../models/Study');
+const Challenge = require('../models/Challenge');
 const router = express.Router();
 
 router.post("/delete", async (req, res) => {
     try {
-        await Study.remove({
+        await Challenge.remove({
             _id: req.body._id
         });
         res.json({ message: true });
@@ -16,17 +16,12 @@ router.post("/delete", async (req, res) => {
 
 router.post("/update", async (req, res) => {
     try {
-        await Study.update(
+        await Challenge.update(
             { _id: req.body._id },
             {
                 $set: {
                     title: req.body.title,
-                    /* category: req.body.category, */
-                    rule: req.body.rule,
-                    goal: req.body.goal,
-                    kaTalkLink: req.body.kaTalkLink,
-                    name: req.body.name,
-                    department: req.body.department,
+                    content: req.body.content
                 }
             }
         );
@@ -40,18 +35,13 @@ router.post("/update", async (req, res) => {
 router.post("/write", async (req, res) => {
     try {
         let obj = {
-            title: req.body.title,
-            /* category: req.body.category, */
-            rule: req.body.rule,
-            goal: req.body.goal,
-            kaTalkLink: req.body.kaTalkLink,
-            name: req.body.name,
-            department: req.body.department,
             writer: req.body._id,
+            title: req.body.title,
+            content: req.body.content,
         };
 
-        const study = new Study(obj);
-        await study.save();
+        const challenge = new Challenge(obj);
+        await challenge.save();
         res.json({ message: "스터디가 업로드 되었습니다." });
     } catch (err) {
         console.log(err);
@@ -62,10 +52,10 @@ router.post("/write", async (req, res) => {
 router.post("/getStudyList", async (req, res) => {
     try {
         const _id = req.body._id;
-        const study = await Study.find({ writer: _id }, null, {
+        const challenge = await Challenge.find({ writer: _id }, null, {
             sort: { createdAt: -1 }
         });
-        res.json({ list: study });
+        res.json({ list: challenge });
     } catch (err) {
         console.log(err);
         res.json({ message: false });
@@ -75,7 +65,7 @@ router.post("/getStudyList", async (req, res) => {
 router.post("/detail", async (req, res) => {
     try {
         const _id = req.body._id;
-        const study = await Study.find({ _id });
+        const challenge = await Challenge.find({ _id });
         res.json({ study });
     } catch (err) {
         console.log(err);

@@ -10,7 +10,7 @@ const headers = { withCredentials: true };
 
 const MypageForm = () => {
     const divStyle = { margin: 50 };
-    const marginBottom = { marginBottom : 5 };
+    const marginBottom = { marginTop: 10, marginRight: 10 };
     return (
         <div style={divStyle}>
             <Form.Group controlId="formBasicEmail">
@@ -25,10 +25,10 @@ const MypageForm = () => {
                 <Form.Label>새로운 비밀번호 재확인</Form.Label>
                 <Form.Control type="password" />
             </Form.Group>
-            <Button variant="primary"  block style={marginBottom}>
+            <Button variant="primary" block style={marginBottom}>
                 회원정보 수정
             </Button>
-            <Button variant="primary" block>
+            <Button variant="primary" block style={marginBottom}>
                 회원 탈퇴
             </Button>
         </div>

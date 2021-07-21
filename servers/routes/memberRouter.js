@@ -8,7 +8,6 @@ router.post("/join", async (req, res) => {
     try {
         let obj = { email: req.body.email };
         let user = await User.findOne(obj);
-        console.log(user);
         if (user) {
             res.json({
                 message: "이메일이 중복되었습니다. 새로운 이메일을 입력해주세요.",
@@ -23,7 +22,6 @@ router.post("/join", async (req, res) => {
                         if (err) {
                             console.log(err);
                         } else {
-                            console.log(key.toString("base64"));
                             buf.toString("base64");
                             obj = {
                                 email: req.body.email,
@@ -52,10 +50,7 @@ router.post("/login", async (req, res) => {
             if (err) {
                 console.log(err);
             } else {
-                console.log(user);
                 if (user) {
-                    console.log(req.body.password);
-                    console.log(user.salt);
                     crypto.pbkdf2(req.body.password, user.salt, 100000, 64, "sha512", async (err, key) => {
                         if (err) {
                             console.log(err);
@@ -65,7 +60,6 @@ router.post("/login", async (req, res) => {
                                 password: key.toString("base64")
                             };
                             const user2 = await User.findOne(obj);
-                            console.log(user2);
                             if (user2) {
                                 try {
                                     await User.updateOne({ email: req.body.email }, { $set: { loginCnt: 0 } });
@@ -73,21 +67,19 @@ router.post("/login", async (req, res) => {
                                     console.log(err);
                                     res.json({ message: "로그인 실패" });
                                 }
-                                console.log(user.email);
                                 req.session.email = user.email;
-                                console.log('test');
                                 res.json({
                                     message: "로그인 되었습니다!",
                                     _id: user2._id,
                                     email: user2.email
                                 });
                             } else {
-                                res.json({ message: "아이디나 패스워드가 일치하지 않습니다." });
+                                res.json({ message: "아이디나 비밀번호가 일치하지 않습니다." });
                             }
                         }
                     });
                 } else {
-                    res.json({ message: "아이디나 패스워드가 일치하지 않습니다." });
+                    res.json({ message: "아이디나 비밀번호가 일치하지 않습니다." });
                 }
             }
         });

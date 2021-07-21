@@ -5,21 +5,22 @@ import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
 
+// POS 정책 우회
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
-class LoginForm extends React.Component {
+class RegistForm extends React.Component {
     join = () => {
         const joinEmail = this.joinEmail.value;
         const joinName = this.joinName.value;
         const joinPw = this.joinPw.value;
-        const regExp = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        const regExp2 = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+        const regExpForEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+        const regExpForPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
         if (joinEmail === "" || joinEmail === undefined) {
             alert("이메일 주소를 입력해주세요.");
             this.joinEmail.focus();
             return;
-        } else if (joinEmail.match(regExp) === null || joinEmail.match(regExp) === undefined) {
+        } else if (joinEmail.match(regExpForEmail) === null || joinEmail.match(regExpForEmail) === undefined) {
             alert("이메일 형식에 맞게 입력해주세요.");
             this.joinEmail.value = "";
             this.joinEmail.focus();
@@ -32,7 +33,7 @@ class LoginForm extends React.Component {
             alert("비밀번호를 입력해주세요.");
             this.joinPw.focus();
             return;
-        } else if (joinPw.match(regExp2) === null || joinPw.match(regExp2) === undefined) {
+        } else if (joinPw.match(regExpForPw) === null || joinPw.match(regExpForPw) === undefined) {
             alert("비밀번호를 숫자와 문자, 특수문자 포함 8~16자리로 입력해주세요.");
             this.joinPw.value = "";
             this.joinPw.focus();
@@ -58,42 +59,7 @@ class LoginForm extends React.Component {
                     this.joinPw.value = "";
                 }
             } else {
-                alert("회원가입 실패");
-            }
-        })
-        .catch(err => {
-            console.log(err);
-        });
-    };
-
-    login = () => {
-        const loginEmail = this.loginEmail.value;
-        const loginPw = this.loginPw.value;
-
-        if (loginEmail === "" || loginEmail === undefined) {
-            alert("이메일 주소를 입력해주세요.");
-            this.loginEmail.focus();
-            return;
-        } else if (loginPw === "" || loginPw === undefined) {
-            alert("비밀번호를 입력해주세요.");
-            this.loginPw.focus();
-            return;
-        }
-
-        const send_param = {
-            headers,
-            email: this.loginEmail.value,
-            password: this.loginPw.value
-        };
-
-        axios.post("http://localhost:8080/member/login", send_param).then(returnData => {
-            if (returnData.data.message) {
-                $.cookie("login_id", returnData.data._id, { expires: 1 });
-                $.cookie("login_email", returnData.data.email, { expires: 1 });
-                alert(returnData.data.message);
-                window.location.reload();
-            } else {
-                alert(returnData.data.message);
+                alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
             }
         })
         .catch(err => {
@@ -139,34 +105,9 @@ class LoginForm extends React.Component {
                         회원가입
                     </Button>
                 </Form.Group>
-                <hr></hr>
-                <h2>로그인</h2>
-                <Form.Group controlId="loginForm">
-                    <Form.Label>이메일</Form.Label>
-                    <Form.Control
-                        type="email"
-                        maxLength="100"
-                        ref={ref => (this.loginEmail = ref)}
-                    />
-                    <Form.Label>비밀번호</Form.Label>
-                    <Form.Control
-                        type="password"
-                        maxLength="20"
-                        ref={ref => (this.loginPw = ref)}
-                    />
-                    <Button
-                        style={buttonStyle}
-                        onClick={this.login}
-                        variant="primary"
-                        type="button"
-                        block
-                    >
-                        로그인
-                    </Button>
-                </Form.Group>
             </Form>
         );
     }
 }
 
-export default LoginForm;
+export default RegistForm;
