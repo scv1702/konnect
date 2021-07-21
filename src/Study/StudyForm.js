@@ -30,8 +30,7 @@ class StudyForm extends React.Component {
     };
     
     getStudyList = () => {
-        const sendParam = { headers, _id: $.cookie("login_id") };
-        axios.post("http://localhost:8080/study/getStudyList", sendParam).then(returnData => {
+        axios.post("http://localhost:8080/study/getStudyList").then(returnData => {
             let studyList;
             if (returnData.data.list.length > 0) {
                 const studys = returnData.data.list;
@@ -70,16 +69,8 @@ class StudyForm extends React.Component {
         return (
             <div>
                 <div style={divStyle}>
-                <Button style={btnStyle} variant="primary"><NavLink to='/study/write' style={navStyle}>스터디 모집하기</NavLink></Button>
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>날짜</th>
-                                <th>스터디 제목</th>
-                            </tr>
-                        </thead>
-                        <tbody>{this.state.studyList}</tbody>
-                    </Table>
+                    <Button style={btnStyle} variant="primary"><NavLink to='/study/write' style={navStyle}>스터디 모집하기</NavLink></Button>
+                    {this.state.studyList}
                 </div>
             </div>
         );

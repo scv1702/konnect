@@ -61,8 +61,7 @@ router.post("/write", async (req, res) => {
 
 router.post("/getStudyList", async (req, res) => {
     try {
-        const _id = req.body._id;
-        const study = await Study.find({ writer: _id }, null, {
+        const study = await Study.find({ }, null, {
             sort: { createdAt: -1 }
         });
         res.json({ list: study });
