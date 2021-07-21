@@ -10,7 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 ReactDOM.render(
   <BrowserRouter>
     <Header />
-    <Body />
+    <Body /> 
   </BrowserRouter>,
   document.getElementById("root")
 );

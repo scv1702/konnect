@@ -13,7 +13,7 @@ class StudyRow extends React.Component {
     render() {
         const detailLink = '/study/detail/:' + this.props._id;
         return (
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block' }}>
                 <Card.Body>
                     <Card.Title>{this.props.title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
@@ -69,9 +69,10 @@ class StudyForm extends React.Component {
         const navStyle = { textDecoration: 'none', color: 'white' };
 
         return (
-            <div>
-                <div style={divStyle}>
-                    <Button style={btnStyle} variant="dark"><NavLink to='/study/write' style={navStyle}>스터디 모집하기</NavLink></Button>
+            <div style={divStyle}>
+                <h1>스터디</h1>
+                <Button style={btnStyle} variant="dark"><NavLink to='/study/write' style={navStyle}>스터디 모집하기</NavLink></Button>
+                <div>
                     {this.state.studyList}
                 </div>
             </div>

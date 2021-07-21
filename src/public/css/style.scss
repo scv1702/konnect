@@ -1,0 +1,118 @@
+body {
+    font-family: "Century Gothic", 'Lato', sans-serif;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+.logo {
+    width: 100%;
+    height: 500px;
+    background-image: url('../images/home_logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+}
+
+.black_area {
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 260px;
+    background-color: black;
+}
+
+
+.et-hero-tabs,
+.et-slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 90vh;
+    position: relative;
+    text-align: center;
+    padding: 30px 2em 0 2em;
+
+}
+
+
+.et-hero-tabs-container {
+    display: flex;
+    flex-direction: row;
+    position: absolute;
+    bottom: 160px;
+    width: 100%;
+    height: 100px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background: black;
+    z-index: 10;
+
+    &--top {
+        position: fixed;
+        top: 0;
+    }
+}
+
+.small_logo {
+    width: 30%;
+    height: 100px;
+    display: flex;
+    .logo_img {
+        width: 120px;
+        height: 100px;
+        margin-left: 80px;
+        background-image: url('../images/logo_small.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        opacity: 0;
+    }
+}
+
+.et-hero-tab {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    color: white;
+    letter-spacing: 0.1rem;
+    transition: all 0.5s ease;
+    font-size: 0.8rem;
+
+    &:hover {
+        color: white;
+        background: cadetblue;
+        transition: all 0.5s ease;
+    }
+}
+
+.et-hero-tab-slider {
+    position: absolute;
+    bottom: 0;
+    width: 0;
+    height: 6px;
+    background:darkcyan;
+    transition: left 0.3s ease;
+}
+
+@media (min-width: 800px) {
+
+    .et-hero-tabs,
+    .et-slide {
+        h1 {
+            font-size: 3rem;
+        }
+
+        h3 {
+            font-size: 1rem;
+        }
+    }
+
+    .et-hero-tab {
+        font-size: 20px;
+        font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    }
+}

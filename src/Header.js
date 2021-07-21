@@ -32,7 +32,7 @@ class Header extends React.Component {
 
     render() {
         const navStyle = { textDecoration: 'none', color: 'black' };
-        const btnStyle = { textDecoration: 'none', color: 'white' };
+        const btnStyle = { textDecoration: 'none', color: 'white', float: 'right' };
         let nav;
         
         if ($.cookie("login_id")) {
@@ -49,8 +49,11 @@ class Header extends React.Component {
                                 <Nav.Link><NavLink to="/mypage" style={navStyle}>내 페이지</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/regist" style={navStyle}>회원가입</NavLink></Nav.Link>
                             </Nav>
+                            <Nav className="justify-content-end">
+                                <Button style={btnStyle} onClick={this.logout} variant="dark">로그아웃</Button>
+                            </Nav>
                         </Navbar.Collapse>
-                        <Button style={btnStyle} onClick={this.logout} variant="dark">로그아웃</Button>
+                        
                     </Container>
                     </Navbar>
                 </div>
@@ -68,9 +71,13 @@ class Header extends React.Component {
                                     <Nav.Link><NavLink to="/challenge" style={navStyle}>챌린지</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/mypage" style={navStyle}>내 페이지</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/regist" style={navStyle}>회원가입</NavLink></Nav.Link>
+                                    
+                                </Nav>
+                                <Nav className="justify-content-end">
+                                    <Button variant="dark"><NavLink to="/login" style={btnStyle}>로그인</NavLink></Button>
                                 </Nav>
                             </Navbar.Collapse>
-                            <Button variant="dark"><NavLink to="/login" style={btnStyle}>로그인</NavLink></Button>
+                            
                         </Container>
                     </Navbar>
                 </div>

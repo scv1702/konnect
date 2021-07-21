@@ -27,7 +27,9 @@ router.post("/update", async (req, res) => {
                     authAvailEnd: req.body.authAvailEnd,
                     pee: req.body.pee,
                     startMon: req.body.startMon,
-                    startDay: req.body.startDay
+                    startDay: req.body.startDay,
+                    name: req.body.name,
+                    writer: req.body._id
                 }
             }
         );
@@ -49,7 +51,8 @@ router.post("/write", async (req, res) => {
             pee: req.body.pee,
             startMon: req.body.startMon,
             startDay: req.body.startDay,
-            writer: req.body._id,
+            name: req.body.name,
+            writer: req.body._id
         };
 
         const challenge = new Challenge(obj);

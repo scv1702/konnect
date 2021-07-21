@@ -41,7 +41,7 @@ router.post("/write", async (req, res) => {
     try {
         let obj = {
             title: req.body.title,
-            /* category: req.body.category, */
+            category: req.body.category,
             rule: req.body.rule,
             goal: req.body.goal,
             kaTalkLink: req.body.kaTalkLink,

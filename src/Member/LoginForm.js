@@ -1,9 +1,9 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button"
+import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
+import '../public/css/cardCenter.css';
 
 // POS 정책 우회
 axios.defaults.withCredentials = true;
@@ -46,34 +46,39 @@ class LoginForm extends React.Component {
     };
 
     render() {
-        const formStyle = { margin: 50, width: '30%' };
         const buttonStyle = { marginTop: 10 };
         return (
-            <Form style={formStyle}>
-                <h2>로그인</h2>
-                <Form.Group controlId="loginForm">
-                    <Form.Label>이메일</Form.Label>
-                    <Form.Control
-                        type="email"
-                        maxLength="100"
-                        ref={ref => (this.loginEmail = ref)}
-                    />
-                    <Form.Label>비밀번호</Form.Label>
-                    <Form.Control
-                        type="password"
-                        maxLength="20"
-                        ref={ref => (this.loginPw = ref)}
-                    />
-                    <Button
-                        style={buttonStyle}
-                        onClick={this.login}
-                        variant="dark"
-                        type="button"
-                        block
-                    >
-                        로그인
-                    </Button>
-                </Form.Group>
+            <Form className="formStyle">
+                <Card style={{ width: '30rem' }}>
+                    <Card.Body>
+                        <Card.Title style={{ textAlign: 'center'}}>로그인</Card.Title>
+                        <Form.Group>
+                            <Form.Label>이메일</Form.Label>
+                            <Form.Control
+                                type="email"
+                                maxLength="100"
+                                ref={ref => (this.loginEmail = ref)}
+                            />
+                            <Form.Label>비밀번호</Form.Label>
+                            <Form.Control
+                                type="password"
+                                maxLength="20"
+                                ref={ref => (this.loginPw = ref)}
+                            />
+                        </Form.Group>
+                        <div className="formStyle">
+                                <Button
+                                    style={buttonStyle}
+                                    onClick={this.login}
+                                    variant="dark"
+                                    type="button"
+                                    block
+                                >
+                                로그인
+                                </Button>
+                        </div>
+                    </Card.Body>
+                </Card>
             </Form>
         );
     }

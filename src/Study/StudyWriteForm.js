@@ -1,8 +1,9 @@
 import React from "react";
-import { Button, Form } from "react-bootstrap";
+import { Row, Col, Button, Form, Card } from "react-bootstrap";
 import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
+import '../public/css/cardCenter.css';
 
 // SOP 우회
 axios.defaults.withCredentials = true;
@@ -14,7 +15,7 @@ class StudyWriteForm extends React.Component {
         let send_param;
 
         const studyTitle = this.studyTitle.value;
-        /* const studyCategory = this.studyCategory.value; */
+        const studyCategory = '미정';
         const studyRule = this.studyRule.value;
         const studyGoal = this.studyGoal.value;
         const studyKaTalkLink = this.studyKaTalkLink.value;
@@ -26,7 +27,7 @@ class StudyWriteForm extends React.Component {
             headers,
             "_id": $.cookie("login_id"),
             "title": studyTitle,
-            /* "category": studyCategory, */
+            "category": studyCategory,
             "rule": studyRule,
             "goal": studyGoal,
             "kaTalkLink": studyKaTalkLink,
@@ -48,36 +49,41 @@ class StudyWriteForm extends React.Component {
     };
 
     render() {
-        const studyStyle = { margin: 15, width: '40%' };
         return (
-            <div style={studyStyle}>
-                <h2>스터디 개설</h2>
-                <h3>스터디 정보</h3>
-                <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>스터디 제목</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyTitle = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>스터디 설명 & 규칙</Form.Label>
-                        <Form.Control type="textarea" ref={ref => (this.studyRule= ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>스터디 최종 목표</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyGoal = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>카카오톡 개설자 정보</Form.Label>
-                        <Form.Control type="text" placeholder="이름" ref={ref => (this.studyName = ref)} />
-                        <Form.Control type="text" placeholder="학과" ref={ref => (this.studyDepartment = ref)} />
-                    </Form.Group>
-                </Form>
-                <Button variant="dark" onClick={this.writeStudy} block>저장하기</Button>
-            </div>
+            <Form className="formStyle">
+                <Card style={{ width: '30rem' }}>
+                    <Card.Body>
+                        <Card.Title style={{ textAlign: 'center'}}>스터디 개설</Card.Title>
+                        <Form.Group>
+                            <Form.Label>스터디 제목</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.studyTitle = ref)} />
+                            <Form.Label>스터디 설명 & 규칙</Form.Label>
+                            <Form.Control as="textarea" rows={5} ref={ref => (this.studyRule = ref)} />
+                            <Form.Label>스터디 최종 목표</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.studyGoal = ref)} />
+                            <Form.Label>모집 기간</Form.Label>
+                            <div>
+                                <Form.Check inline label="상시 모집" name="group1" type='radio' id={`inline-radio-1`}/>
+                                <Form.Check inline label="마감일" name="group1" type='radio' id={`inline-radio-2`}/>
+                            </div>
+                            <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} />
+                            <Form.Label>스터디 개설자 정보</Form.Label>
+                            <Row className="g-2">
+                                <Col md>
+                                    <Form.Control type="text" placeholder="이름" ref={ref => (this.studyName = ref)} />
+                                </Col>
+                                <Col md>
+                                    <Form.Control type="text" placeholder="학과" ref={ref => (this.studyDepartment = ref)} />
+                                </Col>
+                            </Row>
+                        </Form.Group>
+                        <div className="formStyle">
+                            <Button variant="dark" onClick={this.writeStudy} block>저장하기</Button>
+                        </div>
+                    </Card.Body>
+                </Card>
+            </Form>
         );
     }
 }

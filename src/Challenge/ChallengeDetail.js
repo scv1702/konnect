@@ -1,6 +1,5 @@
 import React from "react";
-import { Table, Button } from "react-bootstrap";
-import { NavLink } from "react-router-dom";
+import { Button } from "react-bootstrap";
 import axios from "axios";
 
 // POS 정책 우회

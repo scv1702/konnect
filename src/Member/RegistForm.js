@@ -1,9 +1,6 @@
 import React from "react";
-import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button"
-import Card from "react-bootstrap/Card"
+import { Form, Button, Card } from "react-bootstrap";
 import axios from "axios";
-import $ from "jquery";
 import { } from "jquery.cookie";
 import '../public/css/cardCenter.css';
 
@@ -73,55 +70,63 @@ class RegistForm extends React.Component {
     render() {        
         const buttonStyle = { marginTop: 10 };
         return (
-            <Form className = "formStyle">
+            <Form className="formStyle">
                 <Card style={{ width: '30rem' }}>
                     <Card.Body>
-                        <Card.Title style={{ textAlign: 'center'}}>Sign Up</Card.Title>
+                        <Card.Title style={{ textAlign: 'center'}}>회원가입</Card.Title>
                         <Form.Group controlId="joinForm">
-                            <Form.Label>Name</Form.Label>
+                            <Form.Label>이름</Form.Label>
                             <Form.Control
                                 type="text"
                                 maxLength="20"
                                 ref={ref => (this.joinName = ref)}
                             />
-                            <Form.Label>Email</Form.Label>
+                            <Form.Label>이메일</Form.Label>
                             <Form.Control
                                 type="email"
                                 maxLength="100"
                                 ref={ref => (this.joinEmail = ref)}
                             />
                             <Form.Text className="text-muted">
-                                Email is not shared with others.
+                                이메일은 다른 이에게 공유되지 않습니다.
                             </Form.Text><br></br>
-                            <Form.Label>Password</Form.Label>
+                            <Form.Label>비밀번호</Form.Label>
                             <Form.Control
                                 type="password"
                                 maxLength="20"
                                 ref={ref => (this.joinPw = ref)}
-                            /><br></br>
-                            <Form.Label>Department</Form.Label>
+                            />
+                            <Form.Text className="text-muted">
+                                비밀번호를 숫자와 문자, 특수문자 포함 8~16자리로 입력해주세요.
+                            </Form.Text><br></br>
+                            <Form.Label>학과</Form.Label>
                             <Form.Control type="depart" /><br></br>
-                            <Form.Label>Gender</Form.Label>
-                            <Form>
-                                {['radio'].map((type) => (
-                                    <div key={`inline-${type}`} className="mb-3">
-                                        <Form.Check
-                                            inline
-                                            label="male"
-                                            name="group1"
-                                            type={type}
-                                            id={`inline-${type}-1`}
-                                        />
-                                        <Form.Check
-                                            inline
-                                            label="female"
-                                            name="group1"
-                                            type={type}
-                                            id={`inline-${type}-2`}
-                                        />
-                                    </div>
-                                ))}
-                            </Form>
+                            <Form.Label>성별</Form.Label>
+                            {['radio'].map((type) => (
+                                <div key={`inline-${type}`} className="mb-3">
+                                    <Form.Check
+                                        inline
+                                        label="남자"
+                                        name="group1"
+                                        type={type}
+                                        id={`inline-${type}-1`}
+                                    />
+                                    <Form.Check
+                                        inline
+                                        label="여자"
+                                        name="group1"
+                                        type={type}
+                                        id={`inline-${type}-2`}
+                                    />
+                                </div>
+                            ))}
+                            <Form.Label>학년</Form.Label>
+                            <Form.Select>
+                                <option value="1">1학년</option>
+                                <option value="2">2학년</option>
+                                <option value="3">3학년</option>
+                                <option value="4">4학년</option>
+                            </Form.Select>
                         </Form.Group>
                         <div className="formStyle">
                             <Button
@@ -131,10 +136,9 @@ class RegistForm extends React.Component {
                                 type="button"
                                 block
                             >
-                                Sign Up
+                                가입하기
                             </Button>
                         </div>
-                        
                     </Card.Body>
                 </Card>
             </Form>

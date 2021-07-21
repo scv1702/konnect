@@ -13,12 +13,13 @@ class ChallengeRow extends React.Component {
     render() {
         const detailLink = '/challenge/detail/:' + this.props._id;
         return (
-            <Card style={{ width: '18rem' }}>
+            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block' }}>
                 <Card.Body>
                     <Card.Title>{this.props.title}</Card.Title>
-                    <Card.Text>{this.props.authPerDay}</Card.Text>
-                    <Card.Text>{this.props.authAvailStart} ~ {this.props.authAvailEnd}</Card.Text>
-                    <Card.Text>{this.props.pee}</Card.Text>
+                    <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
+                    <Card.Text>하루 인증 횟수 {this.props.authPerDay}</Card.Text>
+                    <Card.Text>인증 기간 {this.props.authAvailStart} ~ {this.props.authAvailEnd}</Card.Text>
+                    <Card.Text>참가비 {this.props.pee}</Card.Text>
                     <Card.Link><NavLink to={detailLink}>참여하기</NavLink></Card.Link>
                 </Card.Body>
             </Card>
@@ -44,6 +45,7 @@ class ChallengeForm extends React.Component {
                         createdAt={item.createdAt}
                         
                         title={item.title}
+                        name={item.name}
                         authPerDay = {item.authPerDay}
                         authAvailStart = {item.authAvailStart}
                         authAvailEnd = {item.authAvailEnd}
@@ -76,9 +78,10 @@ class ChallengeForm extends React.Component {
         const btnStyle = { margin: 10, marginLeft: 0 };
         const navStyle = { textDecoration: 'none', color: 'white' }
         return (
-            <div>
-                <div style={divStyle}>
-                    <Button style={btnStyle} variant="dark"><NavLink to='/challenge/write' style={navStyle}>챌린지 모집하기</NavLink></Button>
+            <div style={divStyle}>
+                <h1>챌린지</h1>
+                <Button style={btnStyle} variant="dark"><NavLink to='/challenge/write' style={navStyle}>챌린지 모집하기</NavLink></Button>
+                <div>
                     {this.state.challengeList}
                 </div>
             </div>
