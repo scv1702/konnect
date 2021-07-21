@@ -44,6 +44,8 @@ app.use(
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
+// Routes
 app.use("/member", require("./routes/memberRouter"));
 app.use("/study", require("./routes/studyRouter"));
 app.use("/challenge", require("./routes/challengeRouter"));

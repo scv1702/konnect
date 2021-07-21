@@ -13,7 +13,7 @@ import ChallengeWriteForm from "./Challenge/ChallengeWriteForm";
 import ChallengeDetail from "./Challenge/ChallengeDetail";
 
 import React from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 import $ from "jquery";
 import {} from "jquery.cookie";
 
@@ -27,13 +27,13 @@ class Body extends React.Component {
                     <Route path="/regist" component={RegistForm}></Route>
                     <Route path="/mypage" component={MypageForm}></Route>
     
+                    <Route exact path="/study" component={StudyForm}></Route>
                     <Route path="/study/detail/:id" component={StudyDetail}></Route>
                     <Route path="/study/write" component={StudyWriteForm}></Route>
-                    <Route exact path="/study" component={StudyForm}></Route>
-
-                    <Route path="/challenge/detail" component={ChallengeDetail}></Route>
-                    <Route path="/challenge/write" component={ChallengeWriteForm}></Route>
+                    
                     <Route exact path="/challenge" component={ChallengeForm}></Route>
+                    <Route path="/challenge/detail/:id" component={ChallengeDetail}></Route>
+                    <Route path="/challenge/write" component={ChallengeWriteForm}></Route>
                 </div>
             );
         // 로그인 하지 않은 경우 로그인 또는 회원가입 화면으로 

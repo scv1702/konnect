@@ -35,7 +35,7 @@ class LoginForm extends React.Component {
                 $.cookie("login_id", returnData.data._id, { expires: 1 });
                 $.cookie("login_email", returnData.data.email, { expires: 1 });
                 alert(returnData.data.message);
-                window.location.reload();
+                window.location.href = "/";
             } else {
                 alert(returnData.data.message);
             }
@@ -67,7 +67,7 @@ class LoginForm extends React.Component {
                     <Button
                         style={buttonStyle}
                         onClick={this.login}
-                        variant="primary"
+                        variant="dark"
                         type="button"
                         block
                     >

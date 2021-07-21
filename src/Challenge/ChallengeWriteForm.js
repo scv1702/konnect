@@ -8,77 +8,40 @@ import { } from "jquery.cookie";
 axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
-class StudyWriteForm extends React.Component {
-    state = {
-        data: ""
-    };
-
-    componentDidMount() {
-        if (this.props.location.query !== undefined) {
-            this.title.value = this.props.location.query.title;
-        }
-    }
-
-    componentWillMount() {
-        if (this.props.location.query !== undefined) {
-            this.setState({
-                data: this.props.location.query.content
-            });
-        }
-    }
-
-    writeStudy = () => {
+class ChallengeWriteForm extends React.Component {
+    writeChallenge = () => {
         let url;
         let send_param;
 
-        const studyTitle = this.studyTitle.value;
-        const studyWriter = this.studyWriter.value;
-        const studyContact = this.studyContact.value;
-        const studyContent = this.state.data;
+        const challengeTitle = this.challengeTitle.value;
+        /* const studyCategory = this.studyCategory.value; */
+        const challengeStartMon = this.challengeStartMon.value;
+        const challengeStartDay = this.challengeStartDay.value;
+        const challengeAuthPerDay = this.challengeAuthPerDay.value;
+        const challengeAuthAvailStart = this.challengeAuthAvailStart.value;
+        const challengeAuthAvailEnd = this.challengeAuthAvailEnd.value;
+        const challengePee = this.challengePee.value;
 
-        if (studyTitle === undefined || studyTitle === "") {
-            alert("스터디 제목을 입력 해주세요.");
-            studyTitle.focus();
-            return;
-        } else if (studyWriter === undefined || studyWriter === "") {
-            alert("스터디장 이름을 입력 해주세요.");
-            studyWriter.focus();
-        } else if (studyContact === undefined || studyContact === "") {
-            alert("카카오톡 오픈 채팅방 링크를 입력 해주세요.");
-            studyContact.focus();
-        } else if (studyContent === undefined || studyContent === "") {
-            alert("스터디 내용을 입력 해주세요.");
-            studyContent.focus();
-        }
-
-        if (this.props.location.query !== undefined) {
-            url = "http://localhost:8080/study/update";
-            send_param = {
-                headers,
-                "_id": this.props.location.query._id,
-                "title": studyTitle,
-                "writer": studyWriter,
-                "contact": studyContact,
-                "content": studyContent,
-            };
-        } else {
-            url = "http://localhost:8080/study/write";
-            send_param = {
-                headers,
-                "_id": $.cookie("login_id"),
-                "title": studyTitle,
-                "name": studyWriter,
-                "contact": studyContact,
-                "content": studyContent,
-            };
-        }
+        url = "http://localhost:8080/challenge/write";
+        send_param = {
+            headers,
+            "_id": $.cookie("login_id"),
+            "title": challengeTitle,
+            "authPerDay": challengeAuthPerDay,
+            /* "category": studyCategory, */
+            "authAvailStart": challengeAuthAvailStart,
+            "authAvailEnd": challengeAuthAvailEnd,
+            "pee": challengePee,
+            "startMon": challengeStartMon,
+            "startDay": challengeStartDay,
+        };
 
         axios.post(url, send_param).then(returnData => {
             if (returnData.data.message) {
                 alert(returnData.data.message);
-                window.location.href = "/";
+                window.location.href = "/challenge";
             } else {
-                alert("스터디 작성에 실패 하였습니다.");
+                alert("챌린지 작성에 실패 하였습니다.");
             }
         })
         .catch(err => {
@@ -87,32 +50,48 @@ class StudyWriteForm extends React.Component {
     };
 
     render() {
-        const studyStyle = { margin: 15, width: '40%' };
+        const challengeStyle = { margin: 15, width: '40%' };
         return (
-            <div style={studyStyle}>
-                <h2>스터디 모집</h2>
-                <Form >
+            <div style={challengeStyle}>
+                <h2>챌린지 개설</h2>
+                <h3>챌린지 정보</h3>
+                <Form>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>스터디 제목</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyTitle = ref)} />
+                        <Form.Label>챌린지 제목</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeTitle = ref)} />
+                    </Form.Group>
+                    <h4>시작 날짜</h4>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>월(Month)</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeStartMon = ref)} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>스터디장 이름</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyWriter = ref)} />
+                        <Form.Label>일(Day)</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeStartDay = ref)} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyContact = ref)} />
+                        <Form.Label>하루 인증 횟수</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeAuthPerDay = ref)} />
+                    </Form.Group>
+                    <h4>인증 가능 시간</h4>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>시작</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeAuthAvailStart = ref)} />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-                        <Form.Label>스터디 내용</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.studyContent = ref)} />
+                        <Form.Label>종료</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeAuthAvailEnd = ref)} />
                     </Form.Group>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                        <Form.Label>참가비</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengePee = ref)} />
+                    </Form.Group>
+                    
                 </Form>
-                <Button onClick={this.writeStudy} block>저장하기</Button>
+                <Button variant="dark" onClick={this.writeChallenge} block>저장하기</Button>
             </div>
         );
     }
 }
 
-export default StudyWriteForm;
+export default ChallengeWriteForm;
