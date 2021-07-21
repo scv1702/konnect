@@ -12,14 +12,11 @@ const studySchema = new Schema({
         type: String,
         required: true
     },
-    /*
     // 카테고리
     category: {
-        type: Number,
+        type: String,
         required: true
     },
-    */
-    // 스터디 설명 & 규칙
     rule: {
         type: String,
         required: true

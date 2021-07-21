@@ -13,7 +13,7 @@ import ChallengeWriteForm from "./Challenge/ChallengeWriteForm";
 import ChallengeDetail from "./Challenge/ChallengeDetail";
 
 import React from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route } from "react-router-dom";
 import $ from "jquery";
 import {} from "jquery.cookie";
 

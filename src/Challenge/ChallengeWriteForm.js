@@ -14,6 +14,7 @@ class ChallengeWriteForm extends React.Component {
         let send_param;
 
         const challengeTitle = this.challengeTitle.value;
+        const challengeName = this.challengeName.value;
         /* const studyCategory = this.studyCategory.value; */
         const challengeStartMon = this.challengeStartMon.value;
         const challengeStartDay = this.challengeStartDay.value;
@@ -34,6 +35,7 @@ class ChallengeWriteForm extends React.Component {
             "pee": challengePee,
             "startMon": challengeStartMon,
             "startDay": challengeStartDay,
+            "name": challengeName
         };
 
         axios.post(url, send_param).then(returnData => {
@@ -56,33 +58,47 @@ class ChallengeWriteForm extends React.Component {
                 <h2>챌린지 개설</h2>
                 <h3>챌린지 정보</h3>
                 <Form>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>챌린지 제목</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeTitle = ref)} />
                     </Form.Group>
+                    <Form.Group className="mb-3">
+                        <Form.Label>챌린지장 이름</Form.Label>
+                        <Form.Control type="text" ref={ref => (this.challengeName = ref)} />
+                    </Form.Group>
+                    <Form.Group className="mb-3">
+                    <Form.Label>카테고리</Form.Label>
+                        <div>
+                            <Form.Check inline label="생활습관" name="category" type='1' />
+                            <Form.Check inline label="운동" name="category" type='2' />
+                            <Form.Check inline label="공부" name="category" type='3' />
+                            <Form.Check inline label="외국어" name="category" type='4'/>
+                            <Form.Check inline label="기타" name="category" type='5' />
+                        </div>
+                    </Form.Group>
                     <h4>시작 날짜</h4>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>월(Month)</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeStartMon = ref)} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>일(Day)</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeStartDay = ref)} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>하루 인증 횟수</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeAuthPerDay = ref)} />
                     </Form.Group>
                     <h4>인증 가능 시간</h4>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>시작</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeAuthAvailStart = ref)} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>종료</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeAuthAvailEnd = ref)} />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Group className="mb-3">
                         <Form.Label>참가비</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengePee = ref)} />
                     </Form.Group>
