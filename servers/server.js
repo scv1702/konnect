@@ -16,6 +16,7 @@ db.once('open', () => {
 });
 
 db.on('error', (err) => {
+    console.log(process.env.MONGO_DB);
     console.log('DB ERROR : ', err);
 });
 
