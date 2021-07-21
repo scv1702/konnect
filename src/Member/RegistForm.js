@@ -1,9 +1,11 @@
 import React from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button"
+import Card from "react-bootstrap/Card"
 import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
+import '../public/css/cardCenter.css';
 
 // POS 정책 우회
 axios.defaults.withCredentials = true;
@@ -15,7 +17,7 @@ class RegistForm extends React.Component {
         const joinName = this.joinName.value;
         const joinPw = this.joinPw.value;
         const regExpForEmail = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
-        const regExpForPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
+        const regExpForPw = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;;
         if (joinEmail === "" || joinEmail === undefined) {
             alert("이메일 주소를 입력해주세요.");
             this.joinEmail.focus();
@@ -57,6 +59,7 @@ class RegistForm extends React.Component {
                     this.joinEmail.value = "";
                     this.joinName.value = "";
                     this.joinPw.value = "";
+                    window.location.href = "/";
                 }
             } else {
                 alert("회원가입에 실패하였습니다. 다시 시도해주세요.");
@@ -67,44 +70,73 @@ class RegistForm extends React.Component {
         });
     };
 
-    render() {
-        const formStyle = { margin: 50, width: '30%' };
+    render() {        
         const buttonStyle = { marginTop: 10 };
         return (
-            <Form style={formStyle}>
-                <h2>회원 가입</h2>
-                <Form.Group controlId="joinForm">
-                    <Form.Label>이메일</Form.Label>
-                    <Form.Control
-                        type="email"
-                        maxLength="100"
-                        ref={ref => (this.joinEmail = ref)}
-                    />
-                    <Form.Text className="text-muted">
-                        다른 사람에게 이메일이 공유되지 않습니다.
-                    </Form.Text><br></br>
-                    <Form.Label>이름</Form.Label>
-                    <Form.Control
-                        type="text"
-                        maxLength="20"
-                        ref={ref => (this.joinName = ref)}
-                    />
-                    <Form.Label>비밀번호</Form.Label>
-                    <Form.Control
-                        type="password"
-                        maxLength="20"
-                        ref={ref => (this.joinPw = ref)}
-                    />
-                    <Button
-                        style={buttonStyle}
-                        onClick={this.join}
-                        variant="primary"
-                        type="button"
-                        block
-                    >
-                        회원가입
-                    </Button>
-                </Form.Group>
+            <Form className = "formStyle">
+                <Card style={{ width: '30rem' }}>
+                    <Card.Body>
+                        <Card.Title style={{ textAlign: 'center'}}>Sign Up</Card.Title>
+                        <Form.Group controlId="joinForm">
+                            <Form.Label>Name</Form.Label>
+                            <Form.Control
+                                type="text"
+                                maxLength="20"
+                                ref={ref => (this.joinName = ref)}
+                            />
+                            <Form.Label>Email</Form.Label>
+                            <Form.Control
+                                type="email"
+                                maxLength="100"
+                                ref={ref => (this.joinEmail = ref)}
+                            />
+                            <Form.Text className="text-muted">
+                                Email is not shared with others.
+                            </Form.Text><br></br>
+                            <Form.Label>Password</Form.Label>
+                            <Form.Control
+                                type="password"
+                                maxLength="20"
+                                ref={ref => (this.joinPw = ref)}
+                            /><br></br>
+                            <Form.Label>Department</Form.Label>
+                            <Form.Control type="depart" /><br></br>
+                            <Form.Label>Gender</Form.Label>
+                            <Form>
+                                {['radio'].map((type) => (
+                                    <div key={`inline-${type}`} className="mb-3">
+                                        <Form.Check
+                                            inline
+                                            label="male"
+                                            name="group1"
+                                            type={type}
+                                            id={`inline-${type}-1`}
+                                        />
+                                        <Form.Check
+                                            inline
+                                            label="female"
+                                            name="group1"
+                                            type={type}
+                                            id={`inline-${type}-2`}
+                                        />
+                                    </div>
+                                ))}
+                            </Form>
+                        </Form.Group>
+                        <div className="formStyle">
+                            <Button
+                                style={buttonStyle}
+                                onClick={this.join}
+                                variant="dark"
+                                type="button"
+                                block
+                            >
+                                Sign Up
+                            </Button>
+                        </div>
+                        
+                    </Card.Body>
+                </Card>
             </Form>
         );
     }

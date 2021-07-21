@@ -58,7 +58,6 @@ class StudyWriteForm extends React.Component {
                         <Form.Label>스터디 제목</Form.Label>
                         <Form.Control type="text" ref={ref => (this.studyTitle = ref)} />
                     </Form.Group>
-
                     <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                         <Form.Label>스터디 설명 & 규칙</Form.Label>
                         <Form.Control type="textarea" ref={ref => (this.studyRule= ref)} />
@@ -77,7 +76,7 @@ class StudyWriteForm extends React.Component {
                         <Form.Control type="text" placeholder="학과" ref={ref => (this.studyDepartment = ref)} />
                     </Form.Group>
                 </Form>
-                <Button onClick={this.writeStudy} block>저장하기</Button>
+                <Button variant="dark" onClick={this.writeStudy} block>저장하기</Button>
             </div>
         );
     }

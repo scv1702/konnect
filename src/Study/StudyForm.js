@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button, Card } from "react-bootstrap";
+import { Table, Button, Card, Row, Col } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
@@ -66,11 +66,12 @@ class StudyForm extends React.Component {
     render() {
         const divStyle = { margin: 50 };
         const btnStyle = { margin: 10, marginLeft: 0 };
-        const navStyle = { textDecoration: 'none', color: 'white' }
+        const navStyle = { textDecoration: 'none', color: 'white' };
+
         return (
             <div>
                 <div style={divStyle}>
-                    <Button style={btnStyle} variant="primary"><NavLink to='/study/write' style={navStyle}>스터디 모집하기</NavLink></Button>
+                    <Button style={btnStyle} variant="dark"><NavLink to='/study/write' style={navStyle}>스터디 모집하기</NavLink></Button>
                     {this.state.studyList}
                 </div>
             </div>

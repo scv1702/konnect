@@ -65,7 +65,7 @@ router.post("/login", async (req, res) => {
                                     await User.updateOne({ email: req.body.email }, { $set: { loginCnt: 0 } });
                                 } catch (err) {
                                     console.log(err);
-                                    res.json({ message: "로그인 실패" });
+                                    res.json({ message: "로그인에 실패하였습니다. 다시 시도해주세요." });
                                 }
                                 req.session.email = user.email;
                                 res.json({
@@ -73,6 +73,7 @@ router.post("/login", async (req, res) => {
                                     _id: user2._id,
                                     email: user2.email
                                 });
+                                console.log("/login " + req.session.email);
                             } else {
                                 res.json({ message: "아이디나 비밀번호가 일치하지 않습니다." });
                             }
@@ -85,12 +86,12 @@ router.post("/login", async (req, res) => {
         });
     } catch (err) {
         console.log(err);
-        res.json({ message: "로그인 실패" });
+        res.json({ message: "로그인에 실패하였습니다. 다시 시도해주세요." });
     }
 });
 
 router.get("/logout", (req, res) => {
-    console.log("/logout" + req.sessionID);
+    console.log("/logout " + req.sessionID);
     req.session.destroy(() => {
         res.json({ message: true });
     });
