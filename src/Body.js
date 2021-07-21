@@ -27,13 +27,13 @@ class Body extends React.Component {
                     <Route path="/regist" component={RegistForm}></Route>
                     <Route path="/mypage" component={MypageForm}></Route>
     
-                    <Route path="/study" component={StudyForm}></Route>
-                    <Route path="/study/write" component={StudyWriteForm}></Route>
                     <Route path="/study/detail/:id" component={StudyDetail}></Route>
+                    <Route path="/study/write" component={StudyWriteForm}></Route>
+                    <Route exact path="/study" component={StudyForm}></Route>
 
-                    <Route path="/challenge" component={ChallengeForm}></Route>
-                    <Route path="/challenge/write" component={ChallengeWriteForm}></Route>
                     <Route path="/challenge/detail" component={ChallengeDetail}></Route>
+                    <Route path="/challenge/write" component={ChallengeWriteForm}></Route>
+                    <Route exact path="/challenge" component={ChallengeForm}></Route>
                 </div>
             );
         // 로그인 하지 않은 경우 로그인 또는 회원가입 화면으로 
@@ -47,7 +47,7 @@ class Body extends React.Component {
 
                     <Route path="/study" component={LoginForm}></Route>
                     <Route path="/study/write" component={LoginForm}></Route>
-                    <Route path="/study/detail/:id" component={LoginForm}></Route>
+                    <Route path="/study/detail/" component={LoginForm}></Route>
 
                     <Route path="/challenge" component={LoginForm}></Route>
                     <Route path="/challenge/write" component={LoginForm}></Route>

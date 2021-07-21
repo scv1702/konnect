@@ -11,13 +11,14 @@ const headers = { withCredentials: true };
 
 class StudyRow extends React.Component {
     render() {
+        const detailLink = '/study/detail/:' + this.props._id;
         return (
             <Card style={{ width: '18rem' }}>
                 <Card.Body>
                     <Card.Title>{this.props.title}</Card.Title>
                     <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
                     <Card.Text>{this.props.goal}</Card.Text>
-                    <Card.Link href={`/study/detail/:{this.props.id}`}>참여하기</Card.Link>
+                    <Card.Link><NavLink to={detailLink}>참여하기</NavLink></Card.Link>
                 </Card.Body>
             </Card>
         );

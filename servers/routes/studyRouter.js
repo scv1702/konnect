@@ -73,8 +73,7 @@ router.post("/getStudyList", async (req, res) => {
 
 router.post("/detail", async (req, res) => {
     try {
-        const _id = req.body._id;
-        const study = await Study.find({ _id });
+        const study = await Study.find({ _id: req.body._id });
         res.json({ study });
     } catch (err) {
         console.log(err);
