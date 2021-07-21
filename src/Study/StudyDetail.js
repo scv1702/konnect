@@ -13,11 +13,7 @@ class StudyDetail extends React.Component {
     };
 
     componentDidMount() {
-        if (this.props.location.query !== undefined) {
-            this.getDetail();
-        } else {
-            window.location.href = '/';
-        }
+        this.getDetail();
     }
 
     deleteStudy = (_id) => {
@@ -36,29 +32,24 @@ class StudyDetail extends React.Component {
     };
 
     getDetail = () => {
-        const sendParam = { headers, _id: this.props.location.query._id };
+        const { params } = this.props.match;
+        const _id = params.id.substr(1);
+        const sendParam = { headers, _id };
         axios.post("http://localhost:8080/study/detail", sendParam).then((returnData) => {
-            const returnStudy = returnData.data.study[0];
+            const returnStudy = returnData.data.study[0]; 
             if (returnStudy) {
                 const study = (
                     <div>
-                        <Table striped bordered hover>
-                            <thead>
-                                <tr>
-                                    <th>{returnStudy.title}</th>
-                                </tr>
-                            </thead>
-                            <tbody> 
-                                <tr>
-                                    <td dangerouslySetInnerHTML={{ __html: returnStudy.rule }}></td>
-                                    <td dangerouslySetInnerHTML={{ __html: returnStudy.goal }}></td>
-                                    <td dangerouslySetInnerHTML={{ __html: returnStudy.kaTalkLink }}></td>
-                                    <td dangerouslySetInnerHTML={{ __html: returnStudy.name }}></td>
-                                    <td dangerouslySetInnerHTML={{ __html: returnStudy.department }}></td>
-                                </tr>
-                            </tbody>
-                        </Table>
-                        <Button block onClick={this.deleteStudy.bind(null, this.props.location.query._id)}>스터디 삭제</Button>
+                        <h2>{returnStudy.title}</h2>
+                        <div>
+                            {returnStudy.name} {returnStudy.department}
+                        </div>
+                        <h3>스터디 설명 & 규칙</h3>
+                        {returnStudy.rule}
+                        <h3>스터디 최종 목표</h3>
+                        {returnStudy.goal}
+                        <h3>카카오톡 오픈 채팅방 링크</h3>
+                        {returnStudy.kaTalkLink}
                     </div>
                 );
                 this.setState({ study });
