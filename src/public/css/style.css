@@ -27,6 +27,83 @@ a {
   background-color: black;
 }
 
+#study,
+#challenge,
+#mento-menti {
+  margin: auto;
+}
+
+.study-content {
+  margin: auto;
+}
+
+.study-content .des1 {
+  margin-bottom: 3px;
+}
+
+.challenge-content {
+  margin: auto;
+}
+
+.mento-menti-content .mento-container {
+  width: 140vh;
+  height: 55vh;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[2];
+      grid-template-columns: repeat(2, 1fr);
+  grid-gap: 100px;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: 30px;
+}
+
+.mento-menti-content .mento-container .mento-section,
+.mento-menti-content .mento-container .menti-section {
+  background-color: darkcyan;
+  opacity: 20%;
+}
+
+.mento-menti-content .card {
+  min-height: 100%;
+  -webkit-box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 4px 7px rgba(0, 0, 0, 0.1);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  text-decoration: none;
+  color: #444;
+  position: relative;
+  top: 0;
+  -webkit-transition: all .1s ease-in;
+  transition: all .1s ease-in;
+}
+
+.mento-menti-content .card:hover {
+  top: -6px;
+  -webkit-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 8px 10px rgba(0, 0, 0, 0.2);
+}
+
+#mento-menti {
+  padding-top: 60px;
+}
+
+h1.menuName {
+  font-family: 'Courier New', Courier, monospace;
+  width: 100%;
+  height: 90px;
+}
+
+.mento-menti-content .menuName {
+  display: inline;
+}
+
 .et-hero-tabs,
 .et-slide {
   display: -webkit-box;
@@ -127,15 +204,112 @@ a {
 @media (min-width: 800px) {
   .et-hero-tabs h1,
   .et-slide h1 {
-    font-size: 3rem;
+    font-size: 4rem;
   }
   .et-hero-tabs h3,
   .et-slide h3 {
     font-size: 1rem;
   }
   .et-hero-tab {
-    font-size: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 25px;
+    font-family: 'Trebuchet MS', Arial, sans-serif;
+    text-decoration: none;
   }
+}
+
+.stripe1 {
+  color: #ccc;
+  line-height: 1;
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 48px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.stripe1:after {
+  content: '{  Study Group  }';
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+  display: block;
+  color: black;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-transition: 1s ease-out width;
+  transition: 1s ease-out width;
+}
+
+.stripe1:hover:after {
+  width: 100%;
+}
+
+.stripe2 {
+  color: #ccc;
+  line-height: 1;
+  position: relative;
+  display: block;
+  white-space: nowrap;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 48px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.stripe2:after {
+  content: '{  Challenge  }';
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+  display: block;
+  color: black;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-transition: 1s ease-out width;
+  transition: 1s ease-out width;
+}
+
+.stripe2:hover:after {
+  width: 100%;
+}
+
+.stripe3 {
+  color: #ccc;
+  line-height: 1;
+  position: relative;
+  display: inline-block;
+  white-space: nowrap;
+  font-family: Arial;
+  font-weight: bold;
+  font-size: 48px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.stripe3:after {
+  content: '{  Mento-Menti  }';
+  position: absolute;
+  left: 0;
+  top: 0;
+  line-height: 1;
+  display: inline-block;
+  color: black;
+  width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  -webkit-transition: 1s ease-out width;
+  transition: 1s ease-out width;
+}
+
+.stripe3:hover:after {
+  width: 100%;
 }
 /*# sourceMappingURL=style.css.map */
