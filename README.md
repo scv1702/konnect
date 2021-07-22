@@ -2,7 +2,7 @@
 2021년 경북대학교 SW 해커톤 팀명: 달커톤 ([신찬규](https://github.com/DDCS3T3), [이윤서](https://github.com/ellie-adm), [이지현](https://github.com/ljhyeon), [유우석](https://github.com/milk-stone))
 * [시연영상]()
 
-## KNU CONNEECT: KONNECT
+## 작품명 KNU CONNEECT: KONNECT
 코로나19 확산에 따라 대학생활은 주로 비대면으로 진행되었습니다. 이로 인해 많은 재학생들은 시간관리를 효율적으로 하는데 어려움을 느꼈습니다. 또한 사람들과의 교류도 감소하였으며, 특히 신입생의 경우 동기와 선배를 보지 못해 대학생활에 대한 정보를 얻기 어려워졌습니다. 따라서 저희는 이를 개선하기 위해 웹 사이트 "<strong>KONNECT</strong>"를 제작하였습니다.
 
 ### KONNECT
