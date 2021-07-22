@@ -14,14 +14,14 @@ class ChallengeRow extends React.Component {
         const detailLink = '/challenge/detail/:' + this.props._id;
         const navStyle = { textDecoration: 'none', color: 'white' };
         return (
-            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
+            <Card style={{ width: '20rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
                 <Card.Body>
                 <Card.Title>{this.props.title} <Badge bg="primary">{this.props.category}</Badge></Card.Title> 
                     <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
                     <b>하루 인증 횟수</b> {this.props.authPerDay}<br />
-                    <b>인증 기간</b> {this.props.authAvailStart} ~ {this.props.authAvailEnd}<br />
-                    <b>참가비</b> {this.props.pee}<br /><br />
-                    <Card.Link><Button variant="dark"><NavLink to={detailLink} style={navStyle}> 참여하기</NavLink></Button></Card.Link>
+                    <b>챌린지 기간</b> {this.props.startDate.substr(0, 10)} ~ {this.props.endDate.substr(0, 10)}<br />
+                    <b>벌금</b> {this.props.pee}<br /><br />
+                    <Card.Link><Button variant="dark"><NavLink to={detailLink} style={navStyle}>참여하기</NavLink></Button></Card.Link>
                 </Card.Body>
             </Card>
         );
@@ -46,14 +46,14 @@ class ChallengeForm extends React.Component {
 
                         title={item.title}
                         category={item.category}
-                        name={item.name}
+                        rule={item.rule}
+                        startDate = {item.startDate}
+                        endDate = {item.endDate}
                         authPerDay = {item.authPerDay}
-                        authAvailStart = {item.authAvailStart}
-                        authAvailEnd = {item.authAvailEnd}
                         pee = {item.pee}
-
-                        startMon = {item.startMon}
-                        startDay = {item.startDay}
+                        kaTalkLink = {item.kaTalkLink}
+                        name={item.name}
+                        department={item.department}
                     ></ChallengeRow>
                 ));
                 this.setState({ challengeList });

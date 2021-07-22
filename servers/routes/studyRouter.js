@@ -27,6 +27,9 @@ router.post("/update", async (req, res) => {
                     kaTalkLink: req.body.kaTalkLink,
                     name: req.body.name,
                     department: req.body.department,
+                    startDate: req.body.startDate,
+                    endDate: req.body.endDate,
+                    writer: req.body._id,
                 }
             }
         );
@@ -47,6 +50,8 @@ router.post("/write", async (req, res) => {
             kaTalkLink: req.body.kaTalkLink,
             name: req.body.name,
             department: req.body.department,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
             writer: req.body._id,
         };
 

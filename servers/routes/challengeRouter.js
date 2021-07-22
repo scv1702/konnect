@@ -22,13 +22,14 @@ router.post("/update", async (req, res) => {
                 $set: {
                     title: req.body.title,
                     category: req.body.category,
+                    rule: req.body.rule,
+                    startDate: req.body.startDate,
+                    endDate: req.body.endDate,
                     authPerDay: req.body.authPerDay,
-                    authAvailStart: req.body.authAvailStart,
-                    authAvailEnd: req.body.authAvailEnd,
                     pee: req.body.pee,
-                    startMon: req.body.startMon,
-                    startDay: req.body.startDay,
+                    kaTalkLink: req.body.kaTalkLink,
                     name: req.body.name,
+                    department: req.body.department,
                     writer: req.body._id
                 }
             }
@@ -45,13 +46,14 @@ router.post("/write", async (req, res) => {
         let obj = {
             title: req.body.title,
             category: req.body.category,
+            rule: req.body.rule,
+            startDate: req.body.startDate,
+            endDate: req.body.endDate,
             authPerDay: req.body.authPerDay,
-            authAvailStart: req.body.authAvailStart,
-            authAvailEnd: req.body.authAvailEnd,
             pee: req.body.pee,
-            startMon: req.body.startMon,
-            startDay: req.body.startDay,
+            kaTalkLink: req.body.kaTalkLink,
             name: req.body.name,
+            department: req.body.department,
             writer: req.body._id
         };
 

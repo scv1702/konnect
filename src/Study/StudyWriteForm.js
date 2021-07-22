@@ -1,9 +1,13 @@
 import React from "react";
 import { Row, Col, Button, Form, Card } from "react-bootstrap";
-
 import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
+
+import { ko } from "date-fns/esm/locale";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 import '../public/css/cardCenter.css';
 
 // SOP 우회
@@ -12,7 +16,9 @@ const headers = { withCredentials: true };
 
 class StudyWriteForm extends React.Component {
     state = {
-        category: ""
+        category: "",
+        startDate: new Date(),
+        endDate: new Date()
     };
 
     writeStudy = () => {
@@ -37,7 +43,9 @@ class StudyWriteForm extends React.Component {
             "goal": studyGoal,
             "kaTalkLink": studyKaTalkLink,
             "name": studyName,
-            "department":studyDepartment,
+            "department": studyDepartment,
+            "startDate": this.state.startDate,
+            "endDate": this.state.endDate
         };
 
         axios.post(url, send_param).then(returnData => {
@@ -79,6 +87,17 @@ class StudyWriteForm extends React.Component {
                             <Form.Control as="textarea" rows={5} ref={ref => (this.studyRule = ref)} />
                             <Form.Label>스터디 최종 목표</Form.Label>
                             <Form.Control type="text" ref={ref => (this.studyGoal = ref)} />
+                            모집기간<br />
+                            <DatePicker 
+                                locale={ko}
+                                selected={this.state.startDate}
+                                dateFormat="yyyy년 MM월 dd일"
+                                onChange={date => this.setState({ startDate: date })} /> ~ <DatePicker 
+                                locale={ko}
+                                selected={this.state.endDate}
+                                dateFormat="yyyy년 MM월 dd일"
+                                onChange={date => this.setState({ endDate: date })} />
+                            <br />
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
                             <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} />
                             <Form.Label>스터디 개설자 정보</Form.Label>
@@ -91,6 +110,7 @@ class StudyWriteForm extends React.Component {
                                 </Col>
                             </Row>
                         </Form.Group>
+                        
                         <div className="formStyle">
                             <Button variant="dark" onClick={this.writeStudy} block>저장하기</Button>
                         </div>
