@@ -37,12 +37,26 @@ a {
   margin: auto;
 }
 
+.study-content .des1,
+.study-content .des3 {
+  font-size: 15px;
+}
+
+.study-content .des3 {
+  margin-bottom: 50px;
+}
+
 .study-content .des1 {
-  margin-bottom: 3px;
+  margin-bottom: 8px;
 }
 
 .challenge-content {
   margin: auto;
+  height: 50%;
+}
+
+.challenge-content .challenge-btn {
+  margin-top: 50px;
 }
 
 .mento-menti-content .mento-container {
@@ -61,8 +75,31 @@ a {
 
 .mento-menti-content .mento-container .mento-section,
 .mento-menti-content .mento-container .menti-section {
-  background-color: darkcyan;
-  opacity: 20%;
+  background-color: aliceblue;
+  position: relative;
+  text-align: center;
+  padding-top: 20px;
+}
+
+.mento-menti-content .mento-container .mento-section .notice-title,
+.mento-menti-content .mento-container .menti-section .notice-title {
+  padding-top: 20px;
+  font-size: 50px;
+  color: black;
+  font-family: 'Trebuchet MS', Arial, sans-serif;
+  font-weight: bold;
+}
+
+.mento-menti-content .mento-container .mento-section .notice-content,
+.mento-menti-content .mento-container .menti-section .notice-content {
+  padding-top: 40px;
+  font-size: 18px;
+  font-family: 'Noto Serif KR', serif;
+}
+
+.mento-menti-content .mento-container .mento-section .notice-content .count,
+.mento-menti-content .mento-container .menti-section .notice-content .count {
+  margin-bottom: 10px;
 }
 
 .mento-menti-content .card {
@@ -94,14 +131,15 @@ a {
   padding-top: 60px;
 }
 
-h1.menuName {
-  font-family: 'Courier New', Courier, monospace;
-  width: 100%;
-  height: 90px;
+#mento-menti > .menuName {
+  margin: auto;
 }
 
-.mento-menti-content .menuName {
-  display: inline;
+h1.menuName {
+  font-family: 'Courier New', Courier, monospace;
+  width: auto;
+  height: 90px;
+  display: inline-block;
 }
 
 .et-hero-tabs,
@@ -285,7 +323,7 @@ h1.menuName {
   color: #ccc;
   line-height: 1;
   position: relative;
-  display: inline-block;
+  display: block;
   white-space: nowrap;
   font-family: Arial;
   font-weight: bold;
@@ -295,12 +333,12 @@ h1.menuName {
 }
 
 .stripe3:after {
-  content: '{  Mento-Menti  }';
+  content: '{  Mentor-Mentee  }';
   position: absolute;
   left: 0;
   top: 0;
   line-height: 1;
-  display: inline-block;
+  display: block;
   color: black;
   width: 0;
   overflow: hidden;
@@ -311,5 +349,13 @@ h1.menuName {
 
 .stripe3:hover:after {
   width: 100%;
+}
+
+.des2 {
+  margin-top: 20px;
+}
+
+.mento-apply-btn {
+  margin-top: 40px;
 }
 /*# sourceMappingURL=style.css.map */
