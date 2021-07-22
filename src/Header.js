@@ -46,6 +46,7 @@ class Header extends React.Component {
                             <Nav className="me-auto">
                                 <Nav.Link><NavLink to="/study" style={navStyle}>스터디</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/challenge" style={navStyle}>챌린지</NavLink></Nav.Link>
+                                <Nav.Link><NavLink to="/mento_menti" style={navStyle}>멘토 멘티</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/mypage" style={navStyle}>내 페이지</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/regist" style={navStyle}>회원가입</NavLink></Nav.Link>
                             </Nav>
@@ -69,6 +70,7 @@ class Header extends React.Component {
                                 <Nav className="me-auto">
                                     <Nav.Link><NavLink to="/study" style={navStyle}>스터디</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/challenge" style={navStyle}>챌린지</NavLink></Nav.Link>
+                                    <Nav.Link><NavLink to="/mento_menti" style={navStyle}>멘토 멘티</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/mypage" style={navStyle}>내 페이지</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/regist" style={navStyle}>회원가입</NavLink></Nav.Link>
                                     
