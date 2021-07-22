@@ -68,9 +68,9 @@ class StudyDetail extends React.Component {
                 alert('스터디 상세 조회에 실패했습니다.');
             }
         })
-            .catch((err) => {
-                console.log(err);
-            });
+        .catch((err) => {
+            console.log(err);
+        });
     };
 
     render() {
