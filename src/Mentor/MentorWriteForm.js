@@ -19,27 +19,27 @@ class MentorWriteForm extends React.Component {
         let url;
         let send_param;
 
-        const mentorName = this.mentorName.value;
-        const mentorDepartment = this.mentorDepartment.value;
-        const mentoradmissionYear = this.mentoradmissionYear.value;
-        const mentorGrade = this.mentorGrade.value;
-        const mentorCategory = this.state.category;
-        const mentorIntroduce = this.mentorIntroduce.value;
-        const mentorNumberOfPeople = this.mentorNumberOfPeople.value;
-        const mentorkaTalkLink = this.mentorkaTalkLink.value;
+        const name = this._name.value;
+        const department = this._department.value;
+        const admissionYear = this._admissionYear.value;
+        const grade = this._grade.value;
+        const category = this.state.category;
+        const introduce = this._introduce.value;
+        const numberOfPeople = this._numberOfPeople.value;
+        const kaTalkLink = this._kaTalkLink.value;
 
         url = "http://localhost:8080/mentor/write";
         send_param = {
             headers,
             "_id": $.cookie("login_id"),
-            "name": mentorName,
-            "introduce": mentorIntroduce,
-            "department": mentorDepartment,
-            "admissionYear": mentoradmissionYear,
-            "grade": mentorGrade,
-            "category": mentorCategory,
-            "numberOfPeople":mentorNumberOfPeople,
-            "kaTalkLink": mentorkaTalkLink,
+            name,
+            introduce,
+            department,
+            admissionYear,
+            grade,
+            category,
+            numberOfPeople,
+            kaTalkLink
         };
 
         axios.post(url, send_param).then(returnData => {
@@ -67,7 +67,7 @@ class MentorWriteForm extends React.Component {
                         <Card.Title style={{ textAlign: 'center'}}>멘토 신청서</Card.Title><hr />
                         <Form.Group>
                             <Form.Label>멘토 이름</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.mentorName = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._name = ref)} /><hr />
                             <Form.Group>
                                 <Form.Label>카테고리</Form.Label>
                                 <div>
@@ -80,21 +80,21 @@ class MentorWriteForm extends React.Component {
                             <Form.Label>멘토 정보</Form.Label>
                             <Row className="g-2">
                                 <Col md>
-                                    <Form.Control type="text" placeholder="학과" ref={ref => (this.mentorDepartment = ref)} />
+                                    <Form.Control type="text" placeholder="학과" ref={ref => (this._department = ref)} />
                                 </Col>
                                 <Col md>
-                                    <Form.Control type="text" placeholder="학번" ref={ref => (this.mentoradmissionYear = ref)} />
+                                    <Form.Control type="text" placeholder="학번" ref={ref => (this._admissionYear = ref)} />
                                 </Col>
                                 <Col md>
-                                    <Form.Control type="text" placeholder="학년" ref={ref => (this.mentorGrade = ref)} />
+                                    <Form.Control type="text" placeholder="학년" ref={ref => (this._grade = ref)} />
                                 </Col>
                             </Row><hr />
                             <Form.Label>자기 소개</Form.Label>
-                            <Form.Control as="textarea" rows={5} ref={ref => (this.mentorIntroduce = ref)} /><hr />
+                            <Form.Control as="textarea" rows={5} ref={ref => (this._introduce = ref)} /><hr />
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.mentorkaTalkLink = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._kaTalkLink = ref)} /><hr />
                             <Form.Label>최대 인원 수</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.mentorNumberOfPeople = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._numberOfPeople = ref)} /><hr />
                         </Form.Group>
                         <div className="formStyle">
                             <Button variant="dark" onClick={this.writeMentor} block>저장하기</Button>

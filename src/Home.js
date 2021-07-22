@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 import React from "react";
 import axios from "axios";
 
-
 const $ = require('jquery');
 
 // POS 우회
@@ -28,8 +27,6 @@ class StickyNavigation {
         });
     }
 
-
-
     onScroll = () => {
         this.checkTabContainerPosition();
         this.findCurrentTabSelector();
@@ -42,11 +39,13 @@ class StickyNavigation {
     }
 
     checkTabContainerPosition = () => {
-        let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
-        if ($(window).scrollTop() > offset) {
-            $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
-        } else {
-            $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+        if ($('.et-hero-tabs').offset()) {
+            let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+            if ($(window).scrollTop() > offset) {
+                $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
+            } else {
+                $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+            }
         }
     }
 
@@ -55,7 +54,6 @@ class StickyNavigation {
         let newCurrentTab;
         let self = this;
         $('.et-hero-tab').each(function () {
-
             let id = $(this).attr('href');
             let offsetTop = $(id).offset().top - self.tabContainerHeight;
             let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
@@ -84,9 +82,11 @@ class StickyNavigation {
 
     appearLogo = () => {
         var posScroll=document.documentElement.scrollTop || document.body.scrollTop;
-        let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
-        if (posScroll+50 > offset) {
-            $(".logo_img").animate({'opacity':'1'},500);
+        if ($('et-hero-tabs').offset()) {
+            let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+            if (posScroll+50 > offset) {
+                $(".logo_img").animate({'opacity':'1'},500);
+            }
         }
     }
 
@@ -118,10 +118,10 @@ class Home extends React.Component {
 
     componentDidMount() {
         this.getNumOfMentor();
+        const stickyNavigation = new StickyNavigation();
     }
 
     render() {
-        const stickyNavigation = new StickyNavigation();
         const btnStyle = { textDecoration: 'none', color: 'white' };
         return (
             <div>
@@ -145,7 +145,6 @@ class Home extends React.Component {
                             <p class="des1">혼자 공부하기 버거울 때, 함께 공부할 사람을 찾게 도와주는 스터디 페이지입니다. </p> <p class="code">스터디를 개설하여 스터디원을 모집할 수 있고, 개설된 스터디에 참여도 가능합니다.</p>
                             <Button variant="dark"><a href="/study" style={btnStyle}>스터디 바로가기</a></Button>
                         </div>
-                        
                     </section>
                     <section class="et-slide" id="challenge">
                         <div class="challenge-content">

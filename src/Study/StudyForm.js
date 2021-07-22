@@ -14,9 +14,10 @@ class StudyRow extends React.Component {
         const detailLink = '/study/detail/:' + this.props._id;
         const navStyle = { textDecoration: 'none', color: 'white' }
         return (
-            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
+            <Card style={{ width: '20rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
                 <Card.Body>
-                    <Card.Title>{this.props.title} <Badge bg="primary">{this.props.category}</Badge></Card.Title> 
+                    <Card.Title>{this.props.title}</Card.Title> 
+                    <Badge bg="primary">{this.props.category}</Badge><br /><br />
                     <Card.Subtitle className="mb-2 text-muted">{this.props.name} </Card.Subtitle>
                     <Card.Text>{this.props.goal} </Card.Text>
                     <Card.Link><Button variant="dark"><NavLink to={detailLink} style={navStyle}> 참여하기</NavLink></Button></Card.Link>

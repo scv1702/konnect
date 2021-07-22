@@ -14,9 +14,10 @@ class MentorRow extends React.Component {
         const detailLink = '/mentor/detail/:' + this.props._id;
         const navStyle = { textDecoration: 'none', color: 'white' }
         return (
-            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
+            <Card style={{ width: '18rem', height: '18rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
                 <Card.Body>
-                    <Card.Title>{this.props.name} 멘토 <Badge bg="primary">{this.props.category}</Badge></Card.Title> 
+                    <Card.Title>{this.props.name} 멘토</Card.Title> 
+                    <Badge bg="primary">{this.props.category}</Badge><br /><br />
                     <Card.Subtitle className="mb-2 text-muted">{this.props.department}</Card.Subtitle>
                     <b>입학 년도(학번)</b> {this.props.admissionYear}<br />
                     <b>학년</b> {this.props.grade}<br />
@@ -43,7 +44,6 @@ class MentorForm extends React.Component {
                         key={Date.now() + Math.random() * 500}
                         _id={item._id}
                         createdAt={item.createdAt}
-
                         name={item.name}
                         introduce={item.introduce}
                         department={item.department}
