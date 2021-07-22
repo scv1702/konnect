@@ -39,11 +39,13 @@ class StickyNavigation {
     }
 
     checkTabContainerPosition = () => {
-        let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
-        if ($(window).scrollTop() > offset) {
-            $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
-        } else {
-            $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+        if ($('.et-hero-tabs').offset()) {
+            let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+            if ($(window).scrollTop() > offset) {
+                $('.et-hero-tabs-container').addClass('et-hero-tabs-container--top');
+            } else {
+                $('.et-hero-tabs-container').removeClass('et-hero-tabs-container--top');
+            }
         }
     }
 
@@ -52,7 +54,6 @@ class StickyNavigation {
         let newCurrentTab;
         let self = this;
         $('.et-hero-tab').each(function () {
-
             let id = $(this).attr('href');
             let offsetTop = $(id).offset().top - self.tabContainerHeight;
             let offsetBottom = $(id).offset().top + $(id).height() - self.tabContainerHeight;
@@ -81,9 +82,11 @@ class StickyNavigation {
 
     appearLogo = () => {
         var posScroll=document.documentElement.scrollTop || document.body.scrollTop;
-        let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
-        if (posScroll+50 > offset) {
-            $(".logo_img").animate({'opacity':'1'},500);
+        if ($('et-hero-tabs').offset()) {
+            let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
+            if (posScroll+50 > offset) {
+                $(".logo_img").animate({'opacity':'1'},500);
+            }
         }
     }
 
@@ -115,10 +118,10 @@ class Home extends React.Component {
 
     componentDidMount() {
         this.getNumOfMentor();
+        const stickyNavigation = new StickyNavigation();
     }
 
     render() {
-        const stickyNavigation = new StickyNavigation();
         const btnStyle = { textDecoration: 'none', color: 'white' };
         return (
             <div>
