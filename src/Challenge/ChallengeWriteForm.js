@@ -9,13 +9,17 @@ axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
 class ChallengeWriteForm extends React.Component {
+    state = {
+        category: ''
+    }
+
     writeChallenge = () => {
         let url;
         let send_param;
 
         const challengeTitle = this.challengeTitle.value;
         const challengeName = this.challengeName.value;
-        /* const studyCategory = this.studyCategory.value; */
+        const studyCategory = this.state.category;
         const challengeStartMon = this.challengeStartMon.value;
         const challengeStartDay = this.challengeStartDay.value;
         const challengeAuthPerDay = this.challengeAuthPerDay.value;
@@ -29,7 +33,7 @@ class ChallengeWriteForm extends React.Component {
             "_id": $.cookie("login_id"),
             "title": challengeTitle,
             "authPerDay": challengeAuthPerDay,
-            /* "category": studyCategory, */
+            "category": studyCategory,
             "authAvailStart": challengeAuthAvailStart,
             "authAvailEnd": challengeAuthAvailEnd,
             "pee": challengePee,
@@ -51,6 +55,10 @@ class ChallengeWriteForm extends React.Component {
         });
     };
 
+    handleChange = (event) => {
+        this.setState({ category: event.target.value });
+    }
+
     render() {
         const challengeStyle = { margin: 15, width: '40%' };
         return (
@@ -61,48 +69,32 @@ class ChallengeWriteForm extends React.Component {
                     <Form.Group className="mb-3">
                         <Form.Label>챌린지 제목</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeTitle = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
                         <Form.Label>챌린지장 이름</Form.Label>
                         <Form.Control type="text" ref={ref => (this.challengeName = ref)} />
+                        <Form.Group>
+                            <Form.Label>카테고리</Form.Label>
+                            <div>
+                                <Form.Check inline label="생활 습관" name="category" type='radio' value="생활 습관" onChange={this.handleChange} />
+                                <Form.Check inline label="운동" name="category" type='radio' value="운동" onChange={this.handleChange} />
+                                <Form.Check inline label="학업" name="category" type='radio' value="학업" onChange={this.handleChange} />
+                                <Form.Check inline label="기타" name="category" type='radio' value="기타" onChange={this.handleChange} />
+                            </div>
+                        </Form.Group>
+                        <h4>시작 날짜</h4>
+                            <Form.Label>월(Month)</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.challengeStartMon = ref)} />
+                            <Form.Label>일(Day)</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.challengeStartDay = ref)} />
+                            <Form.Label>하루 인증 횟수</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.challengeAuthPerDay = ref)} />
+                        <h4>인증 가능 시간</h4>
+                            <Form.Label>시작</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.challengeAuthAvailStart = ref)} />
+                            <Form.Label>종료</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.challengeAuthAvailEnd = ref)} />
+                            <Form.Label>참가비</Form.Label>
+                            <Form.Control type="text" ref={ref => (this.challengePee = ref)} />
                     </Form.Group>
-                    <Form.Group className="mb-3">
-                    <Form.Label>카테고리</Form.Label>
-                        <div>
-                            <Form.Check inline label="생활습관" name="category" type='1' />
-                            <Form.Check inline label="운동" name="category" type='2' />
-                            <Form.Check inline label="공부" name="category" type='3' />
-                            <Form.Check inline label="외국어" name="category" type='4'/>
-                            <Form.Check inline label="기타" name="category" type='5' />
-                        </div>
-                    </Form.Group>
-                    <h4>시작 날짜</h4>
-                    <Form.Group className="mb-3">
-                        <Form.Label>월(Month)</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.challengeStartMon = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>일(Day)</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.challengeStartDay = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>하루 인증 횟수</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.challengeAuthPerDay = ref)} />
-                    </Form.Group>
-                    <h4>인증 가능 시간</h4>
-                    <Form.Group className="mb-3">
-                        <Form.Label>시작</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.challengeAuthAvailStart = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>종료</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.challengeAuthAvailEnd = ref)} />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>참가비</Form.Label>
-                        <Form.Control type="text" ref={ref => (this.challengePee = ref)} />
-                    </Form.Group>
-                    
                 </Form>
                 <Button variant="dark" onClick={this.writeChallenge} block>저장하기</Button>
             </div>

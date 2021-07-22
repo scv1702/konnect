@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button, Card, Row, Col } from "react-bootstrap";
+import { Button, Card, Badge } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
@@ -12,13 +12,14 @@ const headers = { withCredentials: true };
 class StudyRow extends React.Component {
     render() {
         const detailLink = '/study/detail/:' + this.props._id;
+        const navStyle = { textDecoration: 'none', color: 'white' }
         return (
-            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block' }}>
+            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
                 <Card.Body>
-                    <Card.Title>{this.props.title}</Card.Title>
-                    <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
-                    <Card.Text>{this.props.goal}</Card.Text>
-                    <Card.Link><NavLink to={detailLink}>참여하기</NavLink></Card.Link>
+                    <Card.Title>{this.props.title} <Badge bg="primary">{this.props.category}</Badge></Card.Title> 
+                    <Card.Subtitle className="mb-2 text-muted">{this.props.name} </Card.Subtitle>
+                    <Card.Text>{this.props.goal} </Card.Text>
+                    <Card.Link><Button variant="dark"><NavLink to={detailLink} style={navStyle}> 참여하기</NavLink></Button></Card.Link>
                 </Card.Body>
             </Card>
         );
@@ -39,6 +40,7 @@ class StudyForm extends React.Component {
                     <StudyRow
                         key={Date.now() + Math.random() * 500}
                         _id={item._id}
+                        category={item.category}
                         createdAt={item.createdAt}
                         title={item.title}
                         name={item.name}

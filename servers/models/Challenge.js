@@ -12,6 +12,10 @@ const challengeSchema = new Schema({
         type: String,
         required: true
     },
+    category: {
+        type: String,
+        required: true
+    },
     // 챌린지 하루 인증 횟수
     authPerDay: {
         type: String,

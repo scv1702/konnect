@@ -21,7 +21,7 @@ router.post("/update", async (req, res) => {
             {
                 $set: {
                     title: req.body.title,
-                    /* category: req.body.category, */
+                    category: req.body.category,
                     authPerDay: req.body.authPerDay,
                     authAvailStart: req.body.authAvailStart,
                     authAvailEnd: req.body.authAvailEnd,
@@ -44,7 +44,7 @@ router.post("/write", async (req, res) => {
     try {
         let obj = {
             title: req.body.title,
-            /* category: req.body.category, */
+            category: req.body.category,
             authPerDay: req.body.authPerDay,
             authAvailStart: req.body.authAvailStart,
             authAvailEnd: req.body.authAvailEnd,

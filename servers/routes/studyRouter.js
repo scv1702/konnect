@@ -21,7 +21,7 @@ router.post("/update", async (req, res) => {
             {
                 $set: {
                     title: req.body.title,
-                    /* category: req.body.category, */
+                    category: req.body.category,
                     rule: req.body.rule,
                     goal: req.body.goal,
                     kaTalkLink: req.body.kaTalkLink,

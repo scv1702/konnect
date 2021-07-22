@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col, Button, Form, Card } from "react-bootstrap";
+
 import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
@@ -10,12 +11,16 @@ axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
 class StudyWriteForm extends React.Component {
+    state = {
+        category: ""
+    };
+
     writeStudy = () => {
         let url;
         let send_param;
 
         const studyTitle = this.studyTitle.value;
-        const studyCategory = '미정';
+        const studyCategory = this.state.category;
         const studyRule = this.studyRule.value;
         const studyGoal = this.studyGoal.value;
         const studyKaTalkLink = this.studyKaTalkLink.value;
@@ -48,6 +53,10 @@ class StudyWriteForm extends React.Component {
         });
     };
 
+    handleChange = (event) => {
+        this.setState({ category: event.target.value });
+    }
+
     render() {
         return (
             <Form className="formStyle">
@@ -57,15 +66,19 @@ class StudyWriteForm extends React.Component {
                         <Form.Group>
                             <Form.Label>스터디 제목</Form.Label>
                             <Form.Control type="text" ref={ref => (this.studyTitle = ref)} />
+                            <Form.Group>
+                                <Form.Label>카테고리</Form.Label>
+                                <div>
+                                    <Form.Check inline label="학업" name="category" type='radio' value="학업" onChange={this.handleChange} />
+                                    <Form.Check inline label="어학" name="category" type='radio' value="어학" onChange={this.handleChange} />
+                                    <Form.Check inline label="자격증" name="category" type='radio' value="자격증" onChange={this.handleChange} />
+                                    <Form.Check inline label="기타" name="category" type='radio' value="기타" onChange={this.handleChange} />
+                                </div>
+                            </Form.Group>
                             <Form.Label>스터디 설명 & 규칙</Form.Label>
                             <Form.Control as="textarea" rows={5} ref={ref => (this.studyRule = ref)} />
                             <Form.Label>스터디 최종 목표</Form.Label>
                             <Form.Control type="text" ref={ref => (this.studyGoal = ref)} />
-                            <Form.Label>모집 기간</Form.Label>
-                            <div>
-                                <Form.Check inline label="상시 모집" name="group1" type='radio' id={`inline-radio-1`}/>
-                                <Form.Check inline label="마감일" name="group1" type='radio' id={`inline-radio-2`}/>
-                            </div>
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
                             <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} />
                             <Form.Label>스터디 개설자 정보</Form.Label>

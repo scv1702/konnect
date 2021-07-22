@@ -112,7 +112,7 @@ class StickyNavigation {
 }
 
 const Home = () => {
-    // const stickyNavigation = new StickyNavigation();
+    const stickyNavigation = new StickyNavigation();
     const btnStyle = { textDecoration: 'none', color: 'white' };
     return (
         <div>
@@ -131,8 +131,8 @@ const Home = () => {
             <main class="et-main">
                 <section class="et-slide" id="study">
                     <h1>스터디</h1>
+                    <p>혼자 공부하기 버거울 때, 함께 공부할 사람을 찾게 도와주는 스터디 페이지입니다. 스터디를 개설하여 스터디원을 모집할 수 있고, 개설된 스터디에 참여도 가능합니다.</p>
                     <Button variant="dark"><a href="/study" style={btnStyle}>스터디 바로가기</a></Button>
-                    
                 </section>
                 <section class="et-slide" id="challenge">
                     <h1>챌린지</h1>
