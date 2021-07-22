@@ -70,10 +70,10 @@ class StudyWriteForm extends React.Component {
             <Form className="formStyle">
                 <Card style={{ width: '30rem' }}>
                     <Card.Body>
-                        <Card.Title style={{ textAlign: 'center'}}>스터디 개설</Card.Title>
+                        <Card.Title style={{ textAlign: 'center'}}>스터디 개설</Card.Title><hr />
                         <Form.Group>
                             <Form.Label>스터디 제목</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.studyTitle = ref)} />
+                            <Form.Control type="text" ref={ref => (this.studyTitle = ref)} /><hr />
                             <Form.Group>
                                 <Form.Label>카테고리</Form.Label>
                                 <div>
@@ -82,11 +82,11 @@ class StudyWriteForm extends React.Component {
                                     <Form.Check inline label="자격증" name="category" type='radio' value="자격증" onChange={this.handleChange} />
                                     <Form.Check inline label="기타" name="category" type='radio' value="기타" onChange={this.handleChange} />
                                 </div>
-                            </Form.Group>
+                            </Form.Group><hr />
                             <Form.Label>스터디 설명 & 규칙</Form.Label>
-                            <Form.Control as="textarea" rows={5} ref={ref => (this.studyRule = ref)} />
+                            <Form.Control as="textarea" rows={5} ref={ref => (this.studyRule = ref)} /><hr />
                             <Form.Label>스터디 최종 목표</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.studyGoal = ref)} />
+                            <Form.Control type="text" ref={ref => (this.studyGoal = ref)} /><hr />
                             모집기간<br />
                             <DatePicker 
                                 locale={ko}
@@ -97,9 +97,9 @@ class StudyWriteForm extends React.Component {
                                 selected={this.state.endDate}
                                 dateFormat="yyyy년 MM월 dd일"
                                 onChange={date => this.setState({ endDate: date })} />
-                            <br />
+                            <hr />
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} />
+                            <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} /><hr />
                             <Form.Label>스터디 개설자 정보</Form.Label>
                             <Row className="g-2">
                                 <Col md>
@@ -108,7 +108,7 @@ class StudyWriteForm extends React.Component {
                                 <Col md>
                                     <Form.Control type="text" placeholder="학과" ref={ref => (this.studyDepartment = ref)} />
                                 </Col>
-                            </Row>
+                            </Row><hr />
                         </Form.Group>
                         
                         <div className="formStyle">

@@ -74,10 +74,10 @@ class ChallengeWriteForm extends React.Component {
             <Form className="formStyle">
                 <Card style={{ width: '30rem' }}>
                     <Card.Body>
-                        <Card.Title style={{ textAlign: 'center'}}>챌린지 개설</Card.Title>
+                        <Card.Title style={{ textAlign: 'center'}}>챌린지 개설</Card.Title><hr />
                         <Form.Group>
                             <Form.Label>챌린지 제목</Form.Label>
-                            <Form.Control type="text" ref={ref => (this._title = ref)} />
+                            <Form.Control type="text" ref={ref => (this._title = ref)} /><hr />
                             <Form.Group>
                                 <Form.Label>카테고리</Form.Label>
                                 <div>
@@ -86,9 +86,9 @@ class ChallengeWriteForm extends React.Component {
                                     <Form.Check inline label="학업" name="category" type='radio' value="학업" onChange={this.handleChange} />
                                     <Form.Check inline label="기타" name="category" type='radio' value="기타" onChange={this.handleChange} />
                                 </div>
-                            </Form.Group>
+                            </Form.Group><hr />
                             <Form.Label>챌린지 설명 & 규칙</Form.Label>
-                            <Form.Control as="textarea" rows={5} ref={ref => (this._rule = ref)} />
+                            <Form.Control as="textarea" rows={5} ref={ref => (this._rule = ref)} /><hr />
                             챌린지 기간<br />
                             <DatePicker 
                                 locale={ko}
@@ -99,13 +99,13 @@ class ChallengeWriteForm extends React.Component {
                                 selected={this.state.endDate}
                                 dateFormat="yyyy년 MM월 dd일"
                                 onChange={date => this.setState({ endDate: date })} />
-                            <br />
+                            <hr />
                             <Form.Label>하루 인증 횟수</Form.Label>
-                            <Form.Control type="text" ref={ref => (this._authPerDay = ref)} />
+                            <Form.Control type="text" ref={ref => (this._authPerDay = ref)} /><hr />
                             <Form.Label>챌린지 벌금</Form.Label>
-                            <Form.Control type="text" ref={ref => (this._pee = ref)} />
+                            <Form.Control type="text" ref={ref => (this._pee = ref)} /><hr />
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
-                            <Form.Control type="text" ref={ref => (this._kaTalkLink = ref)} />
+                            <Form.Control type="text" ref={ref => (this._kaTalkLink = ref)} /><hr />
                             <Form.Label>챌린지 개설자 정보</Form.Label>
                             <Row className="g-2">
                                 <Col md>
@@ -114,7 +114,7 @@ class ChallengeWriteForm extends React.Component {
                                 <Col md>
                                     <Form.Control type="text" placeholder="학과" ref={ref => (this._department = ref)} />
                                 </Col>
-                            </Row>
+                            </Row><hr />
                         </Form.Group>
                         <div className="formStyle">
                             <Button variant="dark" onClick={this.writeChallenge} block>저장하기</Button>

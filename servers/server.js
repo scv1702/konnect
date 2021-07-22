@@ -48,6 +48,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use("/member", require("./routes/memberRouter"));
 app.use("/study", require("./routes/studyRouter"));
+app.use("/mentor", require("./routes/mentorRouter"));
 app.use("/challenge", require("./routes/challengeRouter"));
 
 app.listen(port, () => {

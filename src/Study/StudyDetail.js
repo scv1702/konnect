@@ -47,16 +47,17 @@ class StudyDetail extends React.Component {
                                 <Card.Title style={{ textAlign: 'center'}}>{returnStudy.title}</Card.Title>
                                 <Form.Group>
                                     <Badge bg="primary">{returnStudy.category}</Badge><br />
+                                    <hr />
                                     <b>스터디장:</b> {returnStudy.name} <br />
                                     <b>학과:</b> {returnStudy.department}<br />
                                     <b>모집기간:</b> {returnStudy.startDate.substr(0, 10) } ~ {returnStudy.endDate.substr(0, 10)}<br />
-                                    <br />
-                                    <Form.Label><b>스터디 설명 & 규칙</b></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/>
-                                    <Form.Label><b>스터디 최종 목표</b></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnStudy.goal}/>
-                                    <Form.Label><b>스터디 설명 & 규칙</b></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/>
+                                    <hr />
+                                    <Form.Label><h5>스터디 설명 & 규칙</h5></Form.Label>
+                                    <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/><hr />
+                                    <Form.Label><h5>스터디 최종 목표</h5></Form.Label>
+                                    <Form.Control plaintext readOnly defaultValue={returnStudy.goal}/><hr />
+                                    <Form.Label><h5>스터디 설명 & 규칙</h5></Form.Label>
+                                    <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/><hr />
                                 </Form.Group>
                                 <Button style={btnStyle} variant="dark"><a href={returnStudy.kaTalkLink} style={navStyle}>카카오톡 오픈 채팅방 입장하기</a></Button>
                                 <Button onClick={this.deleteStudy.bind(null, _id)} variant="dark">스터디 삭제</Button>
