@@ -1,5 +1,5 @@
 import './public/css/style.css';
-import {} from "jquery.cookie";
+import { } from "jquery.cookie";
 import { Button } from 'react-bootstrap';
 import React from "react";
 import axios from "axios";
@@ -16,7 +16,7 @@ class StickyNavigation {
         this.currentTab = null;
         this.tabContainerHeight = 260;
         let self = this;
-        
+
         $(window).scroll(() => {
             this.onScroll();
             this.appearLogo();
@@ -81,11 +81,11 @@ class StickyNavigation {
     }
 
     appearLogo = () => {
-        var posScroll=document.documentElement.scrollTop || document.body.scrollTop;
+        var posScroll = document.documentElement.scrollTop || document.body.scrollTop;
         if ($('et-hero-tabs').offset()) {
             let offset = $('.et-hero-tabs').offset().top + $('.et-hero-tabs').height() - this.tabContainerHeight;
-            if (posScroll+50 > offset) {
-                $(".logo_img").animate({'opacity':'1'},500);
+            if (posScroll + 50 > offset) {
+                $(".logo_img").animate({ 'opacity': '1' }, 500);
             }
         }
     }
@@ -94,39 +94,76 @@ class StickyNavigation {
         var position = $(window).scrollTop();
         if (position > 0 && (position < 190)) {
             $(".black_area").stop().animate({
-                bottom: position/2 + "px"
+                bottom: position / 2 + "px"
             }, 1);
             $(".et-hero-tabs-container").stop().animate({
-                bottom: 160- position/4 + "px"
+                bottom: 160 - position / 4 + "px"
             }, 1);
         }
     }
 }
 
 class Home extends React.Component {
-    state = { numOfMentor: 0 }
+    state = {
+        numOfMentor: 0,
+        numOfMentee: 0
+    }
 
-    getNumOfMentor = () => {
+    numberWithCommas = (x) => {
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    componentDidMount() {
         let numOfMentor;
+        let numOfMentee;
+
         axios.post("http://localhost:8080/mentor/getMentorList").then(returnData => {
             numOfMentor = returnData.data.list.length;
             this.setState({ numOfMentor });
+            
+            $({ val: 0 }).animate({ val: numOfMentor }, {
+                duration: 2000,
+                step: () => {
+                    const num = this.numberWithCommas(Math.floor(this.state.numOfMentor));
+                    $(".mentiCount").text(num);
+                },
+                complete: () => {
+                    const num = this.numberWithCommas(Math.floor(this.state.numOfMentor));
+                    $(".mentiCount").text(num);
+                }
+            });
         }).catch(err => {
             console.log(err);
         });
-    };
 
-    componentDidMount() {
-        this.getNumOfMentor();
-        const stickyNavigation = new StickyNavigation();
+        axios.post("http://localhost:8080/member/getAllMember").then(returnData => {
+            numOfMentee = returnData.data.message.length;
+            this.setState({ numOfMentee });
+
+            $({ val: 0 }).animate({ val: numOfMentee }, {
+                duration: 2000,
+                step: () => {
+                    const num = this.numberWithCommas(Math.floor(this.state.numOfMentee));
+                    $(".mentoCount").text(num);
+                },
+                complete: () => {
+                    const num = this.numberWithCommas(Math.floor(this.state.numOfMentee));
+                    $(".mentoCount").text(num);
+                }
+            });
+        }).catch(err => {
+            console.log(err);
+        });
     }
 
     render() {
         const btnStyle = { textDecoration: 'none', color: 'white' };
+        const stickyNavigation = new StickyNavigation();
+        
         return (
             <div>
                 <section class="et-hero-tabs">
-                    <div class= "logo"> </div>
+                    <div class="logo"> </div>
                     <div class="black_area"></div>
                     <div class="et-hero-tabs-container">
                         <span class="small_logo">
@@ -134,7 +171,7 @@ class Home extends React.Component {
                         </span>
                         <a class="et-hero-tab" href="#study">Study</a>
                         <a class="et-hero-tab" href="#challenge">Challenge</a>
-                        <a class="et-hero-tab" href="#mento-menti">Mento-Menti</a>
+                        <a class="et-hero-tab" href="#mento-menti">Mentor-Mentee</a>
                         <span class="et-hero-tab-slider"></span>
                     </div>
                 </section>
@@ -142,29 +179,50 @@ class Home extends React.Component {
                     <section class="et-slide" id="study">
                         <div class="study-content">
                             <h1 class="menuName stripe1"> &#123; Study Group &#125; </h1>
-                            <p class="des1">혼자 공부하기 버거울 때, 함께 공부할 사람을 찾게 도와주는 스터디 페이지입니다. </p> <p class="code">스터디를 개설하여 스터디원을 모집할 수 있고, 개설된 스터디에 참여도 가능합니다.</p>
+                            <p class="des1">혼자 공부하기 버거울 때, 함께 공부할 사람을 찾게 도와주는 스터디 페이지입니다.</p><p class="des3">스터디를 개설하여 스터디원을 모집할 수 있고, 개설된 스터디에 참여도 가능합니다.</p>
                             <Button variant="dark"><a href="/study" style={btnStyle}>스터디 바로가기</a></Button>
                         </div>
                     </section>
                     <section class="et-slide" id="challenge">
                         <div class="challenge-content">
-                            <h1 class = "menuName stripe2"> &#123; Challenge &#125; </h1>
-                            <Button variant="dark"><a href="/challenge" style={btnStyle}>챌린지 바로가기</a></Button>
+                            <h1 class="menuName stripe2"> &#123; Challenge &#125; </h1>
+                            <p class="des1">생활 습관을 만드는데 도음을 주는 챌린지 페이지입니다.</p>
+                            <p class="des1">자기계발, 운동 등 다양한 챌린지를 통해 삶의 질을 향상할 수 있습니다.</p>
+                            <p class="des3">원하는 챌린지가 없을 경우, 새로이 개설하여 참여할 수 있습니다.</p>
+                            <div class="challenge-btn">
+                                <Button variant="dark"><a href="/challenge" style={btnStyle}>챌린지 바로가기</a></Button>
+                            </div>
                         </div>
                     </section>
                     <section class="et-slide" id="mento-menti">
                         <div class="mento-menti-content">
-                            <h1 class="menuName stripe3">&#123; Mento-Menti &#125;</h1>
+                            <h1 class="menuName stripe3">&#123; Mentor-Mentee &#125;</h1>
                             <div class="mento-container">
                                 <div class="mento-section card">
-                                    <h2>멘토</h2>
-                                    학교 생활, 운동, 친목 분야의 멘토를 모집합니다. 아래 버튼을 눌러 신청해주세요.
-                                    <Button variant="dark"><a href="/mentor/write" style={btnStyle}>멘토 신청하기</a></Button>
+                                    <h1 class="notice-title"> for MENTOR </h1>
+                                    <div class="notice-content des1">
+                                        현재 &nbsp;
+                                        <span class="mentoCount count"></span>
+                                        &nbsp;명의 멘티가 멘토님을 기다리고 있어요!
+                                        <p class="des2"> 학교 생활, 운동, 친목 등 다양한 분야에서</p>
+                                        <p class="des3"> 당신의 재능을 펼쳐 보세요.</p>
+                                    </div>
+                                    <div class="mento-apply-btn">
+                                        <Button variant="dark"><a href="/mentor/write" style={btnStyle}>멘토 신청</a></Button>
+                                    </div>
                                 </div>
                                 <div class="menti-section card">
-                                    <h2>멘티</h2>
-                                    현재 {this.state.numOfMentor} 명의 멘토가 멘티들을 기다리고 있습니다. 아래 버튼을 눌러 신청해주세요.
-                                    <Button variant="dark"><a href="/mentor" style={btnStyle}>멘티 신청하기</a></Button>
+                                    <h1 class="notice-title"> for MENTEE</h1>
+                                    <div class="notice-content des1">
+                                        현재 &nbsp;
+                                        <span class="mentiCount count"></span>
+                                        &nbsp;명의 멘토가 멘티님을 기다리고 있어요!
+                                        <p class="des2"> 코로나로 인한 소통이 단절된 이 시기,</p>
+                                        <p class="des2"> 당신의 멘토를 찾아 보세요.</p>
+                                    </div>
+                                    <div class="mento-apply-btn">
+                                        <Button variant="dark"><a href="/mentor" style={btnStyle}>멘티 신청</a></Button>
+                                    </div>
                                 </div>
                             </div>
                         </div>

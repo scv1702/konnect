@@ -135,7 +135,7 @@ router.post("/add", async (req, res) => {
 
 router.post("/getAllMember", async (req, res) => {
     try {
-        const user = await User.find({});
+        const user = await User.find({ });
         res.json({ message: user });
     } catch (err) {
         console.log(err);
