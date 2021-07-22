@@ -12,6 +12,10 @@ import ChallengeForm from "./Challenge/ChallengeForm";
 import ChallengeWriteForm from "./Challenge/ChallengeWriteForm";
 import ChallengeDetail from "./Challenge/ChallengeDetail";
 
+import MentorForm from './Mentor/MentorForm';
+import MentorWriteForm from './Mentor/MentorWriteForm';
+import MentorDetail from './Mentor/MentorDetail';
+
 import React from "react";
 import { Route } from "react-router-dom";
 import $ from "jquery";
@@ -35,7 +39,9 @@ class Body extends React.Component {
                     <Route path="/challenge/detail/:id" component={ChallengeDetail}></Route>
                     <Route path="/challenge/write" component={ChallengeWriteForm}></Route>
 
-                    {/* <Route path="/mento_menti" component={MentoMenti}></Route> */}
+                    <Route exact path="/mentor" component={MentorForm}></Route>
+                    <Route path="/mentor/detail/:id" component={MentorDetail}></Route>
+                    <Route path="/mentor/write" component={MentorWriteForm}></Route>
                 </div>
             );
         // 로그인 하지 않은 경우 로그인 또는 회원가입 화면으로 
@@ -43,7 +49,6 @@ class Body extends React.Component {
             return (
                 <div>
                     <Route exact path="/" component={Home}></Route>
-                    <Route path="/login" component={LoginForm}></Route>
                     <Route path="/regist" component={RegistForm}></Route>
                     <Route path="/mypage" component={LoginForm}></Route>
 
@@ -55,7 +60,9 @@ class Body extends React.Component {
                     <Route path="/challenge/write" component={LoginForm}></Route>
                     <Route path="/challenge/detail" component={LoginForm}></Route>
 
-                    {/* <Route path="/mento_menti" component={MentoMenti}></Route> */}
+                    <Route path="/mentor" component={LoginForm}></Route>
+                    <Route path="/mentor/detail/:id" component={LoginForm}></Route>
+                    <Route path="/mentor/write" component={LoginForm}></Route>
                 </div>
             );
         }

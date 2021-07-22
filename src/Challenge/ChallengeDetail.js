@@ -47,16 +47,20 @@ class ChallengeDetail extends React.Component {
                                 <Card.Title style={{ textAlign: 'center'}}>{returnChallenge.title}</Card.Title>
                                 <Form.Group>
                                     <Badge bg="primary">{returnChallenge.category}</Badge><br />
+                                    <hr />
                                     <b>챌린지장:</b> {returnChallenge.name} <br />
                                     <b>학과:</b> {returnChallenge.department}<br />
                                     <b>챌린지 기간:</b> {returnChallenge.startDate.substr(0, 10) } ~ {returnChallenge.endDate.substr(0, 10)}<br />
-                                    <br />
-                                    <Form.Label><b>챌린지 설명 & 규칙</b></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnChallenge.rule}/>
-                                    <Form.Label><b>하루 인증 횟수</b></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnChallenge.authPerDay}/>
-                                    <Form.Label><b>벌금</b></Form.Label>
+                                    <hr />
+                                    <Form.Label><h5>챌린지 설명 & 규칙</h5></Form.Label>
+                                    <Form.Control plaintext readOnly defaultValue={returnChallenge.rule}/><hr />
+                                    <Form.Label><h5>하루 인증 횟수</h5></Form.Label>
+                                    <Form.Control plaintext readOnly defaultValue={returnChallenge.authPerDay}/><hr />
+                                    <Form.Label><h5>벌금</h5></Form.Label>
                                     <Form.Control plaintext readOnly defaultValue={returnChallenge.pee}/>
+                                    <Form.Text className="text-muted">
+                                        챌린지에 한 번 미참여시, 벌금 만큼 포인트가 차감됩니다.
+                                    </Form.Text>
                                 </Form.Group>
                                 <Button style={btnStyle} variant="dark"><a href={returnChallenge.kaTalkLink} style={navStyle}>카카오톡 오픈 채팅방 입장하기</a></Button>
                                 <Button onClick={this.deleteChallenge.bind(null, _id)} variant="dark">챌린지 삭제</Button>

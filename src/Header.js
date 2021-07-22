@@ -31,14 +31,14 @@ class Header extends React.Component {
     };
 
     render() {
-        const navStyle = { textDecoration: 'none', color: 'black' };
-        const btnStyle = { textDecoration: 'none', color: 'white', float: 'right' };
+        const navStyle = { textDecoration: 'none', color: 'white' };
+        const btnStyle = { textDecoration: 'none', color: 'black', float: 'right' };
         let nav;
         
         if ($.cookie("login_id")) {
             nav = (
                 <div>
-                    <Navbar bg="light" expand="lg">
+                    <Navbar bg="dark" variant="dark" expand="lg">
                     <Container>
                         <Navbar.Brand href="/">Konnect</Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -46,15 +46,14 @@ class Header extends React.Component {
                             <Nav className="me-auto">
                                 <Nav.Link><NavLink to="/study" style={navStyle}>스터디</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/challenge" style={navStyle}>챌린지</NavLink></Nav.Link>
-                                <Nav.Link><NavLink to="/mento_menti" style={navStyle}>멘토 멘티</NavLink></Nav.Link>
+                                <Nav.Link><NavLink to="/mentor" style={navStyle}>멘토-멘티</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/mypage" style={navStyle}>내 페이지</NavLink></Nav.Link>
                                 <Nav.Link><NavLink to="/regist" style={navStyle}>회원가입</NavLink></Nav.Link>
                             </Nav>
                             <Nav className="justify-content-end">
-                                <Button style={btnStyle} onClick={this.logout} variant="dark">로그아웃</Button>
+                                <Button style={btnStyle} onClick={this.logout} variant="light">로그아웃</Button>
                             </Nav>
                         </Navbar.Collapse>
-                        
                     </Container>
                     </Navbar>
                 </div>
@@ -62,7 +61,7 @@ class Header extends React.Component {
         } else {
             nav = (
                 <div>
-                    <Navbar bg="light" expand="lg">
+                    <Navbar bg="dark" variant="dark" expand="lg">
                         <Container>
                             <Navbar.Brand href="/">Konnect</Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -70,16 +69,14 @@ class Header extends React.Component {
                                 <Nav className="me-auto">
                                     <Nav.Link><NavLink to="/study" style={navStyle}>스터디</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/challenge" style={navStyle}>챌린지</NavLink></Nav.Link>
-                                    <Nav.Link><NavLink to="/mento_menti" style={navStyle}>멘토 멘티</NavLink></Nav.Link>
+                                    <Nav.Link><NavLink to="/mentor" style={navStyle}>멘토-멘티</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/mypage" style={navStyle}>내 페이지</NavLink></Nav.Link>
                                     <Nav.Link><NavLink to="/regist" style={navStyle}>회원가입</NavLink></Nav.Link>
-                                    
                                 </Nav>
                                 <Nav className="justify-content-end">
-                                    <Button variant="dark"><NavLink to="/login" style={btnStyle}>로그인</NavLink></Button>
+                                    <Button variant="light"><NavLink to="/login" style={btnStyle}>로그인</NavLink></Button>
                                 </Nav>
                             </Navbar.Collapse>
-                            
                         </Container>
                     </Navbar>
                 </div>
