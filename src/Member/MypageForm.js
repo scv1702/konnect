@@ -9,8 +9,8 @@ axios.defaults.withCredentials = true;
 const headers = { withCredentials: true };
 
 class MypageForm extends React.Component {
-    deleteStudy = (_id) => {
-        const sendParam = { headers, _id };
+    deleteMember = () => {
+        const sendParam = { headers, _id: $.cookie("login_id") };
         if (window.confirm('정말 탈퇴하시겠습니까?')) {
             axios.post('http://localhost:8080/member/delete', sendParam).then((returnData) => {
                 axios.get("http://localhost:8080/member/logout", { headers }).then(returnData2 => {
@@ -48,7 +48,7 @@ class MypageForm extends React.Component {
                 <Button variant="dark" block style={marginBottom}>
                     회원정보 수정
                 </Button>
-                <Button variant="dark" block style={marginBottom} onClick={this.deleteStudy($.cookie("login_id"))}>
+                <Button variant="dark" block style={marginBottom} onClick={this.deleteMember}>
                     회원 탈퇴
                 </Button>
             </div>
