@@ -55,7 +55,7 @@ class ChallengeDetail extends React.Component {
                                     <Form.Label><h5>챌린지 설명 & 규칙</h5></Form.Label>
                                     <Form.Control plaintext readOnly defaultValue={returnChallenge.rule}/><hr />
                                     <Form.Label><h5>하루 인증 횟수</h5></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnChallenge.authPerDay}/><hr />
+                                    <Form.Control plaintext readOnly defaultValue={returnChallenge.authPerDay + '회'}/><hr />
                                     <Form.Label><h5>벌금</h5></Form.Label>
                                     <Form.Control plaintext readOnly defaultValue={returnChallenge.pee}/>
                                     <Form.Text className="text-muted">

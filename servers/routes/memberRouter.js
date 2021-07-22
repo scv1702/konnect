@@ -99,7 +99,7 @@ router.get("/logout", (req, res) => {
 
 router.post("/delete", async (req, res) => {
     try {
-        await User.remove({
+        await User.deleteOne({
             _id: req.body._id
         });
         res.json({ message: true });
