@@ -34,6 +34,8 @@ class Body extends React.Component {
                     <Route exact path="/challenge" component={ChallengeForm}></Route>
                     <Route path="/challenge/detail/:id" component={ChallengeDetail}></Route>
                     <Route path="/challenge/write" component={ChallengeWriteForm}></Route>
+
+                    {/* <Route path="/mento_menti" component={MentoMenti}></Route> */}
                 </div>
             );
         // 로그인 하지 않은 경우 로그인 또는 회원가입 화면으로 
@@ -52,6 +54,8 @@ class Body extends React.Component {
                     <Route path="/challenge" component={LoginForm}></Route>
                     <Route path="/challenge/write" component={LoginForm}></Route>
                     <Route path="/challenge/detail" component={LoginForm}></Route>
+
+                    {/* <Route path="/mento_menti" component={MentoMenti}></Route> */}
                 </div>
             );
         }

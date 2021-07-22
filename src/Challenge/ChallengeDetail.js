@@ -46,12 +46,16 @@ class ChallengeDetail extends React.Component {
                             <Card.Body>
                                 <Card.Title style={{ textAlign: 'center'}}>{returnChallenge.title}</Card.Title>
                                 <Form.Group>
-                                    <Badge bg="primary">{returnChallenge.category}</Badge><br />
-                                    챌린지장: {returnChallenge.name} <br />
-                                    하루 인증 횟수 {returnChallenge.authPerDay}<br />
-                                    인증 가능 시간 {returnChallenge.authAvailStart} ~ {returnChallenge.authAvailEnd}<br />
-                                    {returnChallenge.startMon} {returnChallenge.startDay} 시작<br />
-                                    참가비 {returnChallenge.pee}<br />
+                                    <Badge bg="primary">{returnChallenge.category}</Badge><br /><br />
+                                    챌린지장: {returnChallenge.name} <br /><br />
+                                    <b>하루 인증 횟수 </b><br />
+                                    {returnChallenge.authPerDay}<br />
+                                    <b>인증 가능 시간 </b><br />
+                                    {returnChallenge.authAvailStart} ~ {returnChallenge.authAvailEnd}<br />
+                                    <b>시작 날짜</b><br />
+                                    {returnChallenge.startMon} {returnChallenge.startDay}<br />
+                                    <b>참가비</b><br />
+                                    {returnChallenge.pee}<br />
                                 </Form.Group>
                                 <Button style={btnStyle} variant="dark"><a href={returnChallenge.kaTalkLink} style={navStyle}>카카오톡 오픈 채팅방 입장하기</a></Button>
                                 <Button onClick={this.deleteChallenge.bind(null, _id)} variant="dark">챌린지 삭제</Button>
