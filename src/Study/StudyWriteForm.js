@@ -25,27 +25,29 @@ class StudyWriteForm extends React.Component {
         let url;
         let send_param;
 
-        const studyTitle = this.studyTitle.value;
-        const studyCategory = this.state.category;
-        const studyRule = this.studyRule.value;
-        const studyGoal = this.studyGoal.value;
-        const studyKaTalkLink = this.studyKaTalkLink.value;
-        const studyName = this.studyName.value;
-        const studyDepartment = this.studyDepartment.value;
+        const title = this._title.value;
+        const category = this.state.category;
+        const rule = this._rule.value;
+        const goal = this._goal.value;
+        const kaTalkLink = this._kaTalkLink.value;
+        const name = this._name.value;
+        const department = this._department.value;
+        const startDate = this.state.startDate;
+        const endDate = this.state.endDate;
 
         url = "http://localhost:8080/study/write";
         send_param = {
             headers,
             "_id": $.cookie("login_id"),
-            "title": studyTitle,
-            "category": studyCategory,
-            "rule": studyRule,
-            "goal": studyGoal,
-            "kaTalkLink": studyKaTalkLink,
-            "name": studyName,
-            "department": studyDepartment,
-            "startDate": this.state.startDate,
-            "endDate": this.state.endDate
+            title,
+            category,
+            rule,
+            goal,
+            kaTalkLink,
+            name,
+            department,
+            startDate,
+            endDate
         };
 
         axios.post(url, send_param).then(returnData => {
@@ -73,7 +75,7 @@ class StudyWriteForm extends React.Component {
                         <Card.Title style={{ textAlign: 'center'}}>스터디 개설</Card.Title><hr />
                         <Form.Group>
                             <Form.Label>스터디 제목</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.studyTitle = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._title = ref)} /><hr />
                             <Form.Group>
                                 <Form.Label>카테고리</Form.Label>
                                 <div>
@@ -84,9 +86,9 @@ class StudyWriteForm extends React.Component {
                                 </div>
                             </Form.Group><hr />
                             <Form.Label>스터디 설명 & 규칙</Form.Label>
-                            <Form.Control as="textarea" rows={5} ref={ref => (this.studyRule = ref)} /><hr />
+                            <Form.Control as="textarea" rows={5} ref={ref => (this._rule = ref)} /><hr />
                             <Form.Label>스터디 최종 목표</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.studyGoal = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._goal = ref)} /><hr />
                             모집기간<br />
                             <DatePicker 
                                 locale={ko}
@@ -99,18 +101,17 @@ class StudyWriteForm extends React.Component {
                                 onChange={date => this.setState({ endDate: date })} />
                             <hr />
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
-                            <Form.Control type="text" ref={ref => (this.studyKaTalkLink = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._kaTalkLink = ref)} /><hr />
                             <Form.Label>스터디 개설자 정보</Form.Label>
                             <Row className="g-2">
                                 <Col md>
-                                    <Form.Control type="text" placeholder="이름" ref={ref => (this.studyName = ref)} />
+                                    <Form.Control type="text" placeholder="이름" ref={ref => (this._name = ref)} />
                                 </Col>
                                 <Col md>
-                                    <Form.Control type="text" placeholder="학과" ref={ref => (this.studyDepartment = ref)} />
+                                    <Form.Control type="text" placeholder="학과" ref={ref => (this._department = ref)} />
                                 </Col>
                             </Row><hr />
                         </Form.Group>
-                        
                         <div className="formStyle">
                             <Button variant="dark" onClick={this.writeStudy} block>저장하기</Button>
                         </div>

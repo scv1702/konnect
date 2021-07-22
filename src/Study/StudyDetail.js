@@ -56,8 +56,6 @@ class StudyDetail extends React.Component {
                                     <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/><hr />
                                     <Form.Label><h5>스터디 최종 목표</h5></Form.Label>
                                     <Form.Control plaintext readOnly defaultValue={returnStudy.goal}/><hr />
-                                    <Form.Label><h5>스터디 설명 & 규칙</h5></Form.Label>
-                                    <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/><hr />
                                 </Form.Group>
                                 <Button style={btnStyle} variant="dark"><a href={returnStudy.kaTalkLink} style={navStyle}>카카오톡 오픈 채팅방 입장하기</a></Button>
                                 <Button onClick={this.deleteStudy.bind(null, _id)} variant="dark">스터디 삭제</Button>

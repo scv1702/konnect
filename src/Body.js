@@ -49,6 +49,7 @@ class Body extends React.Component {
             return (
                 <div>
                     <Route exact path="/" component={Home}></Route>
+                    <Route path="/login" component={LoginForm}></Route>
                     <Route path="/regist" component={RegistForm}></Route>
                     <Route path="/mypage" component={LoginForm}></Route>
 

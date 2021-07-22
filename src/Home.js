@@ -4,7 +4,6 @@ import { Button } from 'react-bootstrap';
 import React from "react";
 import axios from "axios";
 
-
 const $ = require('jquery');
 
 // POS 우회
@@ -27,8 +26,6 @@ class StickyNavigation {
             this.onResize();
         });
     }
-
-
 
     onScroll = () => {
         this.checkTabContainerPosition();
@@ -145,7 +142,6 @@ class Home extends React.Component {
                             <p class="des1">혼자 공부하기 버거울 때, 함께 공부할 사람을 찾게 도와주는 스터디 페이지입니다. </p> <p class="code">스터디를 개설하여 스터디원을 모집할 수 있고, 개설된 스터디에 참여도 가능합니다.</p>
                             <Button variant="dark"><a href="/study" style={btnStyle}>스터디 바로가기</a></Button>
                         </div>
-                        
                     </section>
                     <section class="et-slide" id="challenge">
                         <div class="challenge-content">

@@ -4,6 +4,7 @@ import { NavLink } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
 import { } from "jquery.cookie";
+import logoImg from "./public/images/konnect_logo.png";
 
 // SOP 우회
 axios.defaults.withCredentials = true;
@@ -40,7 +41,14 @@ class Header extends React.Component {
                 <div>
                     <Navbar bg="dark" variant="dark" expand="lg">
                     <Container>
-                        <Navbar.Brand href="/">Konnect</Navbar.Brand>
+                        <Navbar.Brand href="/">
+                            <img
+                                src={logoImg}
+                                width="30"
+                                height="30"
+                                className="d-inline-block align-top"
+                                alt="Konnect Logo"
+                            /></Navbar.Brand>
                         <Navbar.Toggle aria-controls="basic-navbar-nav" />
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="me-auto">
@@ -63,7 +71,14 @@ class Header extends React.Component {
                 <div>
                     <Navbar bg="dark" variant="dark" expand="lg">
                         <Container>
-                            <Navbar.Brand href="/">Konnect</Navbar.Brand>
+                            <Navbar.Brand href="/">
+                                <img
+                                    src={logoImg}
+                                    width="30"
+                                    height="30"
+                                    className="d-inline-block align-top"
+                                    alt="Konnect Logo"
+                                /></Navbar.Brand>
                             <Navbar.Toggle aria-controls="basic-navbar-nav" />
                             <Navbar.Collapse id="basic-navbar-nav">
                                 <Nav className="me-auto">

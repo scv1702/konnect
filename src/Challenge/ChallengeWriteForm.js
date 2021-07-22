@@ -103,7 +103,10 @@ class ChallengeWriteForm extends React.Component {
                             <Form.Label>하루 인증 횟수</Form.Label>
                             <Form.Control type="text" ref={ref => (this._authPerDay = ref)} /><hr />
                             <Form.Label>챌린지 벌금</Form.Label>
-                            <Form.Control type="text" ref={ref => (this._pee = ref)} /><hr />
+                            <Form.Control type="text" ref={ref => (this._pee = ref)} />
+                            <Form.Text className="text-muted">
+                                챌린지에 한 번 미참여시, 벌금 만큼 포인트가 차감됩니다.
+                            </Form.Text><hr />
                             <Form.Label>카카오톡 오픈 채팅방 링크</Form.Label>
                             <Form.Control type="text" ref={ref => (this._kaTalkLink = ref)} /><hr />
                             <Form.Label>챌린지 개설자 정보</Form.Label>

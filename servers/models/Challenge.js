@@ -42,6 +42,7 @@ const challengeSchema = new Schema({
         type: String,
         required: true
     },
+    // 카카오톡 오픈 채팅방 링크
     kaTalkLink: {
         type: String,
         required: true

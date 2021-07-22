@@ -14,9 +14,10 @@ class ChallengeRow extends React.Component {
         const detailLink = '/challenge/detail/:' + this.props._id;
         const navStyle = { textDecoration: 'none', color: 'white' };
         return (
-            <Card style={{ width: '20rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
+            <Card style={{ width: '20rem', height: '19rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
                 <Card.Body>
-                <Card.Title>{this.props.title} <Badge bg="primary">{this.props.category}</Badge></Card.Title> 
+                <Card.Title>{this.props.title}</Card.Title>
+                    <Badge bg="primary">{this.props.category}</Badge><br /><br />
                     <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
                     <b>하루 인증 횟수</b> {this.props.authPerDay}<br />
                     <b>챌린지 기간</b> {this.props.startDate.substr(0, 10)} ~ {this.props.endDate.substr(0, 10)}<br />
