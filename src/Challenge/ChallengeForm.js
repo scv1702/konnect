@@ -1,5 +1,5 @@
 import React from "react";
-import { Table, Button, Card } from "react-bootstrap";
+import { Table, Button, Card, Badge } from "react-bootstrap";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import $ from "jquery";
@@ -12,21 +12,21 @@ const headers = { withCredentials: true };
 class ChallengeRow extends React.Component {
     render() {
         const detailLink = '/challenge/detail/:' + this.props._id;
+        const navStyle = { textDecoration: 'none', color: 'white' };
         return (
-            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block' }}>
+            <Card style={{ width: '18rem', margin: '10px', display: 'inline-block', marginLeft: '0' }}>
                 <Card.Body>
-                    <Card.Title>{this.props.title}</Card.Title>
+                <Card.Title>{this.props.title} <Badge bg="primary">{this.props.category}</Badge></Card.Title> 
                     <Card.Subtitle className="mb-2 text-muted">{this.props.name}</Card.Subtitle>
-                    <Card.Text>하루 인증 횟수 {this.props.authPerDay}</Card.Text>
-                    <Card.Text>인증 기간 {this.props.authAvailStart} ~ {this.props.authAvailEnd}</Card.Text>
-                    <Card.Text>참가비 {this.props.pee}</Card.Text>
-                    <Card.Link><NavLink to={detailLink}>참여하기</NavLink></Card.Link>
+                    <b>하루 인증 횟수</b> {this.props.authPerDay}<br />
+                    <b>인증 기간</b> {this.props.authAvailStart} ~ {this.props.authAvailEnd}<br />
+                    <b>참가비</b> {this.props.pee}<br /><br />
+                    <Card.Link><Button variant="dark"><NavLink to={detailLink} style={navStyle}> 참여하기</NavLink></Button></Card.Link>
                 </Card.Body>
             </Card>
         );
     }
 }
-
 
 class ChallengeForm extends React.Component {
     state = {
@@ -43,8 +43,9 @@ class ChallengeForm extends React.Component {
                         key={Date.now() + Math.random() * 500}
                         _id={item._id}
                         createdAt={item.createdAt}
-                        
+
                         title={item.title}
+                        category={item.category}
                         name={item.name}
                         authPerDay = {item.authPerDay}
                         authAvailStart = {item.authAvailStart}

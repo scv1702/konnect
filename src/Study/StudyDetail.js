@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Card, Form } from "react-bootstrap";
+import { Button, Card, Form, Badge } from "react-bootstrap";
 import axios from "axios";
 import '../public/css/cardCenter.css';
 
@@ -9,7 +9,7 @@ const headers = { withCredentials: true };
 
 class StudyDetail extends React.Component {
     state = {
-        study: [],
+        study: []
     };
 
     componentDidMount() {
@@ -37,9 +37,6 @@ class StudyDetail extends React.Component {
         const sendParam = { headers, _id };
         const btnStyle = { margin: 10, marginLeft: 0 };
         const navStyle = { textDecoration: 'none', color: 'white' };
-        const test = {
-            border: '1px solid gray'
-        };
         axios.post("http://localhost:8080/study/detail", sendParam).then((returnData) => {
             const returnStudy = returnData.data.study[0];
             if (returnStudy) {
@@ -49,7 +46,9 @@ class StudyDetail extends React.Component {
                             <Card.Body>
                                 <Card.Title style={{ textAlign: 'center'}}>{returnStudy.title}</Card.Title>
                                 <Form.Group>
-                                    카테고리: {returnStudy.category} 작성자: {returnStudy.name} 학과: {returnStudy.department}
+                                    <Badge bg="primary">{returnStudy.category}</Badge><br />
+                                    스터디장: {returnStudy.name} <br />
+                                    학과: {returnStudy.department}<br />
                                     <br />
                                     <Form.Label><b>스터디 설명 & 규칙</b></Form.Label>
                                     <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/>
