@@ -47,8 +47,9 @@ class StudyDetail extends React.Component {
                                 <Card.Title style={{ textAlign: 'center'}}>{returnStudy.title}</Card.Title>
                                 <Form.Group>
                                     <Badge bg="primary">{returnStudy.category}</Badge><br />
-                                    스터디장: {returnStudy.name} <br />
-                                    학과: {returnStudy.department}<br />
+                                    <b>스터디장:</b> {returnStudy.name} <br />
+                                    <b>학과:</b> {returnStudy.department}<br />
+                                    <b>모집기간:</b> {returnStudy.startDate.substr(0, 10) } ~ {returnStudy.endDate.substr(0, 10)}<br />
                                     <br />
                                     <Form.Label><b>스터디 설명 & 규칙</b></Form.Label>
                                     <Form.Control plaintext readOnly defaultValue={returnStudy.rule}/>

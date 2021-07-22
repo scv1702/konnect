@@ -41,6 +41,16 @@ const studySchema = new Schema({
         type: String,
         required: true
     },
+    // 스터디 모집 시작 날짜
+    startDate: {
+        type: Date,
+        required: true
+    },
+    // 스터디 모집 마감 날짜
+    endDate: {
+        type: Date,
+        required: true
+    },
     writer: {
         type: ObjectId,
         required: true,
